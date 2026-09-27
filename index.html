@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GN Massage - აირჩიეთ ლოკაცია</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>GN Massage - Welcome</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -14,8 +14,8 @@
         }
 
         body {
-            background: linear-gradient(rgba(15, 23, 18, 0.85), rgba(10, 15, 12, 0.92)), 
-                        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed;
+            background-color: #0b0f0c;
+            background-image: radial-gradient(circle at center, #1a2e22 0%, #0b0f0c 70%);
             height: 100vh;
             display: flex;
             align-items: center;
@@ -23,35 +23,95 @@
             color: #ffffff;
             text-align: center;
             padding: 1.5rem;
+            overflow: hidden;
         }
 
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 3rem 2rem;
-            border-radius: 24px;
-            max-width: 480px;
+        /* 3-წამიანი Intro Splash Screen */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            height: 100%;
+            background-color: #0b0f0c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            animation: fadeOutSplash 1s ease 2.6s forwards;
         }
 
-        .logo {
+        .splash-logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #ffffff;
+            opacity: 0;
+            animation: fadeInLogo 1.2s ease 0.3s forwards;
+        }
+
+        .splash-logo span {
+            color: #D4AF37;
+        }
+
+        .splash-sub {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888888;
+            margin-top: 0.8rem;
+            opacity: 0;
+            animation: fadeInLogo 1.2s ease 0.8s forwards;
+        }
+
+        @keyframes fadeInLogo {
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOutSplash {
+            0% { opacity: 1; visibility: visible; }
+            100% { opacity: 0; visibility: hidden; pointer-events: none; }
+        }
+
+        /* მთავარი ბარათი */
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 3.5rem 2.2rem;
+            border-radius: 28px;
+            max-width: 460px;
+            width: 100%;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            animation: fadeInMain 1s ease 3s forwards;
+        }
+
+        @keyframes fadeInMain {
+            0% { opacity: 0; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .main-logo {
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            color: #ffffff;
+            margin-bottom: 0.4rem;
         }
 
-        .logo span {
+        .main-logo span {
             color: #D4AF37;
         }
 
         .subtitle {
-            font-size: 0.95rem;
-            color: #cccccc;
+            font-size: 0.9rem;
+            color: #a0a0a0;
             margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.5;
         }
 
         .buttons-container {
@@ -65,50 +125,70 @@
             align-items: center;
             justify-content: center;
             padding: 1.1rem 1.5rem;
-            border-radius: 14px;
+            border-radius: 16px;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 600;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
         .btn-tbilisi {
-            background: #2C5E3B;
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
             color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .btn-tbilisi:hover {
-            background: #367348;
+            background: linear-gradient(135deg, #255232, #367348);
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(44, 94, 59, 0.4);
+            box-shadow: 0 10px 25px rgba(44, 94, 59, 0.4);
         }
 
         .btn-bakuriani {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.08);
             color: #ffffff;
-            border-color: #D4AF37;
+            border: 1px solid #D4AF37;
         }
 
         .btn-bakuriani:hover {
             background: #D4AF37;
-            color: #121212;
+            color: #0b0f0c;
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
         }
 
-        footer-text {
-            margin-top: 2rem;
+        .lang-switch {
+            margin-top: 2.2rem;
             font-size: 0.8rem;
-            color: #888888;
+            color: #777777;
+            letter-spacing: 1px;
+        }
+
+        .lang-switch span {
+            color: #D4AF37;
+            font-weight: 600;
+        }
+
+        @media (max-width: 480px) {
+            .welcome-card { padding: 2.5rem 1.5rem; }
+            .splash-logo { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
+    <!-- 3-წამიანი ანიმირებული Splash Screen -->
+    <div class="splash-screen">
+        <div class="splash-logo">GN <span>MASSAGE</span></div>
+        <div class="splash-sub">Therapy & Wellness</div>
+    </div>
+
+    <!-- მთავარი არჩევანის ბარათი -->
     <div class="welcome-card">
-        <div class="logo">GN <span>MASSAGE</span></div>
-        <p class="subtitle">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>გთხოვთ აირჩიოთ ლოკაცია:</p>
+        <div class="main-logo">GN <span>MASSAGE</span></div>
+        <p class="subtitle">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
 
         <div class="buttons-container">
             <a href="tbilisi.html" class="location-btn btn-tbilisi">
@@ -119,8 +199,8 @@
             </a>
         </div>
 
-        <div style="margin-top: 2.5rem; font-size: 0.8rem; color: #aaaaaa;">
-            GE | EN | RU
+        <div class="lang-switch">
+            <span>GE</span> | EN | RU
         </div>
     </div>
 
