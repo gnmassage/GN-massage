@@ -39,7 +39,7 @@
             align-items: center;
             justify-content: center;
             z-index: 999;
-            animation: fadeOutSplash 1s ease 2.6s forwards;
+            animation: fadeOutSplash 0.8s ease 2.5s forwards;
         }
 
         .splash-logo {
@@ -87,7 +87,7 @@
             width: 100%;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
             opacity: 0;
-            animation: fadeInMain 1s ease 3s forwards;
+            animation: fadeInMain 1s ease 2.8s forwards;
         }
 
         @keyframes fadeInMain {
@@ -112,6 +112,7 @@
             margin-bottom: 2.5rem;
             font-weight: 300;
             line-height: 1.5;
+            min-height: 2.7em;
         }
 
         .buttons-container {
@@ -130,8 +131,6 @@
             font-size: 1.05rem;
             font-weight: 600;
             transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
         }
 
         .btn-tbilisi {
@@ -159,16 +158,32 @@
             box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
         }
 
+        /* ენების გადამრთველი */
         .lang-switch {
             margin-top: 2.2rem;
-            font-size: 0.8rem;
-            color: #777777;
+            font-size: 0.85rem;
+            color: #666666;
             letter-spacing: 1px;
         }
 
-        .lang-switch span {
-            color: #D4AF37;
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #777777;
+            font-size: 0.85rem;
             font-weight: 600;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: #ffffff;
+        }
+
+        .lang-btn.active {
+            color: #D4AF37;
+            border-bottom: 2px solid #D4AF37;
         }
 
         @media (max-width: 480px) {
@@ -188,21 +203,60 @@
     <!-- მთავარი არჩევანის ბარათი -->
     <div class="welcome-card">
         <div class="main-logo">GN <span>MASSAGE</span></div>
-        <p class="subtitle">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
+        <p class="subtitle" id="sub-text">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
 
         <div class="buttons-container">
-            <a href="tbilisi.html" class="location-btn btn-tbilisi">
+            <a href="tbilisi.html" class="location-btn btn-tbilisi" id="btn-tbilisi-text">
                 📍 მასაჟი თბილისში
             </a>
-            <a href="bakuriani.html" class="location-btn btn-bakuriani">
+            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">
                 ❄️ მასაჟი ბაკურიანში
             </a>
         </div>
 
+        <!-- ენების გადამრთველი ღილაკები -->
         <div class="lang-switch">
-            <span>GE</span> | EN | RU
+            <button class="lang-btn active" onclick="setLanguage('ka')">GE</button> | 
+            <button class="lang-btn" onclick="setLanguage('en')">EN</button> | 
+            <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
         </div>
     </div>
+
+    <script>
+        // ენების ტექსტების ბაზა
+        const translations = {
+            ka: {
+                subtitle: "პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:",
+                btnTbilisi: "📍 მასაჟი თბილისში",
+                btnBakuriani: "❄️ მასაჟი ბაკურიანში"
+            },
+            en: {
+                subtitle: "Professional Massage & Body Recovery<br>Please select location:",
+                btnTbilisi: "📍 Massage in Tbilisi",
+                btnBakuriani: "❄️ Massage in Bakuriani"
+            },
+            ru: {
+                subtitle: "Профессиональный массаж и восстановление<br>Выберите локацию:",
+                btnTbilisi: "📍 Массаж в Тбилиси",
+                btnBakuriani: "❄️ Массаж в Бакуриани"
+            }
+        };
+
+        function setLanguage(lang) {
+            // ტექსტების განახლება
+            document.getElementById('sub-text').innerHTML = translations[lang].subtitle;
+            document.getElementById('btn-tbilisi-text').innerHTML = translations[lang].btnTbilisi;
+            document.getElementById('btn-bakuriani-text').innerHTML = translations[lang].btnBakuriani;
+
+            // აქტიური ღილაკის ვიზუალი
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            if (lang === 'ka') buttons[0].classList.add('active');
+            if (lang === 'en') buttons[1].classList.add('active');
+            if (lang === 'ru') buttons[2].classList.add('active');
+        }
+    </script>
 
 </body>
 </html>
