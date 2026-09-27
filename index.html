@@ -3,20 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GN Massage - პროფესიონალური მასაჟი | თბილისი & ბაკურიანი</title>
-    <!-- Google Fonts -->
+    <title>GN Massage - აირჩიეთ ლოკაცია</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #2C5E3B;
-            --primary-dark: #1E4027;
-            --accent: #D4AF37;
-            --bg-light: #F8F9FA;
-            --text-dark: #212529;
-            --text-muted: #6C757D;
-            --white: #FFFFFF;
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -25,334 +14,115 @@
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--white);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
+            background: linear-gradient(rgba(15, 23, 18, 0.85), rgba(10, 15, 12, 0.92)), 
+                        url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat fixed;
+            height: 100vh;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 1.5rem;
+            justify-content: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .welcome-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
         }
 
         .logo span {
-            color: var(--accent);
+            color: #D4AF37;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, rgba(44,94,59,0.95), rgba(30,64,39,0.9)), url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80') center/cover;
-            color: var(--white);
-            text-align: center;
-            padding: 4rem 1.5rem;
+        .subtitle {
+            font-size: 0.95rem;
+            color: #cccccc;
+            margin-bottom: 2.5rem;
         }
 
-        .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-
-        .hero-buttons {
+        .buttons-container {
             display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 1.2rem;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
+        .location-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.1rem 1.5rem;
+            border-radius: 14px;
             text-decoration: none;
+            font-size: 1.1rem;
             font-weight: 600;
             transition: all 0.3s ease;
+            border: 1px solid rgba(212, 175, 55, 0.4);
         }
 
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--text-dark);
+        .btn-tbilisi {
+            background: #2C5E3B;
+            color: #ffffff;
         }
 
-        .btn-secondary {
-            background-color: rgba(255,255,255,0.2);
-            color: var(--white);
-            border: 1px solid var(--white);
+        .btn-tbilisi:hover {
+            background: #367348;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(44, 94, 59, 0.4);
         }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        .btn-bakuriani {
+            background: rgba(212, 175, 55, 0.15);
+            color: #ffffff;
+            border-color: #D4AF37;
         }
 
-        /* Sections General */
-        .section {
-            padding: 4rem 1.5rem;
-            max-width: 1100px;
-            margin: 0 auto;
+        .btn-bakuriani:hover {
+            background: #D4AF37;
+            color: #121212;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 2.5rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background-color: var(--accent);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* Locations Grid */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border: 1px solid #E9ECEF;
-        }
-
-        .card-badge {
-            display: inline-block;
-            background: #E8F5E9;
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            margin-bottom: 0.8rem;
-            color: var(--text-dark);
-        }
-
-        .card p {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .service-item {
-            background: var(--white);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-
-        .service-item h4 {
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .service-item p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        /* Why Us Section */
-        .why-us-box {
-            background: #EBF3ED;
-            border-radius: 12px;
-            padding: 2.5rem;
-            margin-top: 1rem;
-        }
-
-        .why-us-list {
-            list-style: none;
-        }
-
-        .why-us-list li {
-            margin-bottom: 1rem;
-            padding-left: 1.8rem;
-            position: relative;
-        }
-
-        .why-us-list li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2.5rem 1.5rem;
-            margin-top: 3rem;
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        .contact-links {
-            margin: 1.5rem 0;
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-links a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 1.8rem; }
-            .section { padding: 2.5rem 1rem; }
+        footer-text {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #888888;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="nav-container">
-            <a href="#" class="logo">GN <span>MASSAGE</span></a>
-            <div style="font-size: 0.9rem; font-weight: 600; color: var(--text-muted);">
-                GE | EN | RU
-            </div>
-        </div>
-    </header>
+    <div class="welcome-card">
+        <div class="logo">GN <span>MASSAGE</span></div>
+        <p class="subtitle">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>გთხოვთ აირჩიოთ ლოკაცია:</p>
 
-    <!-- Hero -->
-    <section class="hero">
-        <h1>პროფესიონალური მასაჟი და სხეულის აღდგენა</h1>
-        <p>ინდივიდუალური მიდგომა, ჯანმრთელობაზე ორიენტირებული ტექნიკა და სრული რელაქსაცია თბილისსა და ბაკურიანში.</p>
-        <div class="hero-buttons">
-            <a href="#tbilisi" class="btn btn-primary">📍 თბილისის კაბინეტი</a>
-            <a href="#bakuriani" class="btn btn-secondary">📍 ბაკურიანის კაბინეტი</a>
-        </div>
-    </section>
-
-    <!-- Locations -->
-    <section class="section">
-        <h2 class="section-title">ჩვენი კაბინეტები</h2>
-        <div class="grid-2">
-            
-            <!-- Tbilisi -->
-            <div class="card" id="tbilisi">
-                <span class="card-badge">მთავარი ფილიალი</span>
-                <h3>📍 თბილისი</h3>
-                <p>მუდმივად მოქმედი კაბინეტი. სპეციალიზებული ზურგის ტკივილის მოხსნასა და ჯდომითი სამუშაოსგან გამოწვეული დაჭიმულობის მკურნალობაზე.</p>
-                <a href="https://wa.me/" class="btn btn-primary" style="display:block; text-align:center;">ჩაწერა თბილისში</a>
-            </div>
-
-            <!-- Bakuriani -->
-            <div class="card" id="bakuriani">
-                <span class="card-badge">სეზონური (ზამთარი / ზაფხული)</span>
-                <h3>📍 ბაკურიანი</h3>
-                <p>სპეციალურად მორგებული აქტიური დასვენებისა და სრიალის შემდეგ კუნთების სწრაფ აღდგენაზე, სპაზმების მოხსნასა და რელაქსაციაზე.</p>
-                <a href="https://wa.me/" class="btn btn-primary" style="display:block; text-align:center;">ჩაწერა ბაკურიანში</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section class="section" style="background-color: var(--white); border-radius: 16px;">
-        <h2 class="section-title">სერვისები</h2>
-        <div class="services-grid">
-            <div class="service-item">
-                <h4>სამკურნალო / გამაჯანსაღებელი</h4>
-                <p>ღრმა ქსოვილების მასაჟი კუნთოვანი ტკივილებისა და სპაზმების მოსახსნელად.</p>
-            </div>
-            <div class="service-item">
-                <h4>სპორტული / აღდგენითი</h4>
-                <p>იდეალურია ფიზიკური დატვირთვისა და სრიალის შემდეგ სწრაფი აღდგენისთვის.</p>
-            </div>
-            <div class="service-item">
-                <h4>რელაქსაციური</h4>
-                <p>სტრესის მოხსნა, ნერვული სისტემის დამშვიდება და სრული განტვირთვა.</p>
-            </div>
-            <div class="service-item">
-                <h4>ანტიცელულიტური</h4>
-                <p>სხეულის კორექცია, სისხლის მიმოქცევის გაუმჯობესება და ტონუსში მოყვანა.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Us -->
-    <section class="section">
-        <h2 class="section-title">რატომ GN Massage?</h2>
-        <div class="why-us-box">
-            <ul class="why-us-list">
-                <li><strong>2+ წლის გამოცდილება:</strong> ასობით კმაყოფილი კლიენტი თბილისსა და ბაკურიანში.</li>
-                <li><strong>ინდივიდუალური მიდგომა:</strong> მასაჟის ტექნიკა ირჩევა თქვენი სხეულის საჭიროებიდან გამომდინარე.</li>
-                <li><strong>მყუდრო და სუფთა გარემო:</strong> უმაღლესი ჰიგიენური სტანდარტები და კომფორტი.</li>
-                <li><strong>შედეგზე ორიენტირებული:</strong> არა უბრალოდ პროცესი, არამედ რეალური შვება ტკივილისგან.</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <h3 style="margin-bottom: 0.5rem;">GN MASSAGE</h3>
-        <p>ჯანმრთელობა და რელაქსაცია თბილისსა და ბაკურიანში</p>
-        
-        <div class="contact-links">
-            <a href="tel:+995500000000">📞 დარეკვა</a>
-            <a href="https://wa.me/">💬 WhatsApp</a>
-            <a href="https://instagram.com" target="_blank">📸 Instagram</a>
+        <div class="buttons-container">
+            <a href="tbilisi.html" class="location-btn btn-tbilisi">
+                📍 მასაჟი თბილისში
+            </a>
+            <a href="bakuriani.html" class="location-btn btn-bakuriani">
+                ❄️ მასაჟი ბაკურიანში
+            </a>
         </div>
 
-        <p style="margin-top: 1.5rem;">&copy; 2026 GN Massage. ყველა უფლება დაცულია.</p>
-    </footer>
+        <div style="margin-top: 2.5rem; font-size: 0.8rem; color: #aaaaaa;">
+            GE | EN | RU
+        </div>
+    </div>
 
 </body>
 </html>
