@@ -14,7 +14,6 @@
         }
 
         body {
-            /* ელეგანტური, მუქი/შავი ფონი */
             background-color: #0b0f0c;
             background-image: radial-gradient(circle at center, #16241a 0%, #0b0f0c 75%);
             height: 100vh;
@@ -66,23 +65,36 @@
             align-items: center;
             justify-content: center;
             z-index: 999;
-            animation: fadeOutSplash 0.8s ease 2.8s forwards;
+            animation: fadeOutSplash 0.8s ease 2.5s forwards;
             cursor: pointer;
         }
 
-        .splash-img {
-            max-width: 220px;
-            width: 70%;
-            height: auto;
+        .splash-logo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: #ffffff;
             opacity: 0;
             animation: fadeInLogo 1.2s ease 0.3s forwards;
-            /* ლოგოს კონტურების თეთრად/ღიად გამოკვეთა მუქ ფონზე */
-            filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.25));
+        }
+
+        .splash-logo span {
+            color: #D4AF37;
+        }
+
+        .splash-sub {
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888888;
+            margin-top: 0.8rem;
+            opacity: 0;
+            animation: fadeInLogo 1.2s ease 0.8s forwards;
         }
 
         @keyframes fadeInLogo {
-            0% { opacity: 0; transform: scale(0.92); }
-            100% { opacity: 1; transform: scale(1); }
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeOutSplash {
@@ -96,13 +108,13 @@
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 3rem 2.2rem;
+            padding: 3.5rem 2.2rem;
             border-radius: 28px;
             max-width: 460px;
             width: 100%;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
             opacity: 0;
-            animation: fadeInMain 1s ease 3.1s forwards;
+            animation: fadeInMain 1s ease 2.8s forwards;
         }
 
         @keyframes fadeInMain {
@@ -110,18 +122,21 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        .main-logo-img {
-            max-width: 150px;
-            width: 60%;
-            height: auto;
-            margin-bottom: 1.2rem;
-            filter: brightness(0) invert(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+        .main-logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 0.4rem;
+        }
+
+        .main-logo span {
+            color: #D4AF37;
         }
 
         .subtitle {
             font-size: 0.9rem;
             color: #a0a0a0;
-            margin-bottom: 2.2rem;
+            margin-bottom: 2.5rem;
             font-weight: 300;
             line-height: 1.5;
             min-height: 2.7em;
@@ -171,7 +186,7 @@
         }
 
         .lang-switch {
-            margin-top: 2rem;
+            margin-top: 2.2rem;
             font-size: 0.85rem;
             color: #666666;
             letter-spacing: 1px;
@@ -196,9 +211,8 @@
         }
 
         @media (max-width: 480px) {
-            .welcome-card { padding: 2.2rem 1.5rem; }
-            .splash-img { max-width: 170px; }
-            .main-logo-img { max-width: 120px; }
+            .welcome-card { padding: 2.5rem 1.5rem; }
+            .splash-logo { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -214,14 +228,15 @@
         🔊
     </button>
 
-    <!-- 3-წამიანი Intro Splash Screen (მუქ ფონზე) -->
+    <!-- 3-წამიანი Intro Splash Screen -->
     <div class="splash-screen">
-        <img src="https://i.ibb.co/3ykG8m0/gn-logo-trans.png" alt="GN Massage" class="splash-img">
+        <div class="splash-logo">GN <span>MASSAGE</span></div>
+        <div class="splash-sub">Therapy & Wellness</div>
     </div>
 
     <!-- მთავარი არჩევანის ბარათი -->
     <div class="welcome-card">
-        <img src="https://i.ibb.co/3ykG8m0/gn-logo-trans.png" alt="GN Massage" class="main-logo-img">
+        <div class="main-logo">GN <span>MASSAGE</span></div>
         <p class="subtitle" id="sub-text">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
 
         <div class="buttons-container">
