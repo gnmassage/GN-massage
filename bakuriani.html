@@ -280,6 +280,13 @@
 
         .contact-link:hover { opacity: 0.8; }
 
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -397,13 +404,26 @@
         <div class="location-section">
             <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 ლოკაცია & კონტაქტი — ბაკურიანი</h3>
             <div class="contact-info">
-                <div>🏔️ ლოკაცია: <b>ბაკურიანი</b> (სეზონური კაბინეტი)</div>
+                <div>📍 მისამართი: <a href="https://maps.app.goo.gl/pC3Y96kst4826Sxz7" target="_blank" class="contact-link" id="map-link">Google Maps-ზე ნახვა 🗺️</a></div>
+                <div>🕒 <span id="hours-text">სამუშაო საათები:</span> <b style="color: #D4AF37;">10:00 - 22:00</b></div>
                 <div>📞 ტელეფონი: <a href="tel:+995557998522" class="contact-link">+995 557 99 85 22</a></div>
                 <div>💬 WhatsApp: <a href="https://wa.me/995557998522" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
                 <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
             </div>
 
-            <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="loc-cta">💬 ჩაეწერე ვიზიტზე</a>
+            <!-- Interactive Map Embed -->
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2983.832204908953!2d43.5332!3d41.7925!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQ3JzMzLjAiTiA0M8KwMzInMDAuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge" 
+                    width="100%" 
+                    height="280" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" style="margin-top: 1.8rem;" id="loc-cta">💬 ჩაეწერე ვიზიტზე</a>
         </div>
     </div>
 
@@ -434,6 +454,8 @@
                 minutes: "წუთი",
                 bookBtn: "ჩაწერა →",
                 locTitle: "📍 ლოკაცია & კონტაქტი — ბაკურიანი",
+                mapText: "Google Maps-ზე ნახვა 🗺️",
+                hoursText: "სამუშაო საათები:",
                 locCta: "💬 ჩაეწერე ვიზიტზე"
             },
             en: {
@@ -455,6 +477,8 @@
                 minutes: "min",
                 bookBtn: "Book →",
                 locTitle: "📍 Location & Contact — Bakuriani",
+                mapText: "View on Google Maps 🗺️",
+                hoursText: "Working Hours:",
                 locCta: "💬 Book Your Visit"
             },
             ru: {
@@ -476,6 +500,8 @@
                 minutes: "мин",
                 bookBtn: "Запись →",
                 locTitle: "📍 Локация и контакты — Бакуриани",
+                mapText: "Открыть в Google Maps 🗺️",
+                hoursText: "Часы работы:",
                 locCta: "💬 Записаться на визит"
             }
         };
@@ -505,6 +531,8 @@
             }
 
             document.getElementById('loc-title').innerText = t.locTitle;
+            document.getElementById('map-link').innerText = t.mapText;
+            document.getElementById('hours-text').innerText = t.hoursText;
             document.getElementById('loc-cta').innerText = t.locCta;
 
             const buttons = document.querySelectorAll('.lang-btn');
