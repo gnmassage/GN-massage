@@ -281,6 +281,26 @@
 
         .contact-link:hover { opacity: 0.8; }
 
+        .map-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(212, 175, 55, 0.1);
+            color: #D4AF37;
+            border: 1px solid #D4AF37;
+            padding: 0.8rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .map-btn:hover {
+            background: #D4AF37;
+            color: #0b0f0c;
+        }
+
         /* Footer */
         footer {
             text-align: center;
@@ -417,6 +437,9 @@
                 <div>💬 WhatsApp: <a href="https://wa.me/995557998522" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
                 <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
             </div>
+            
+            <a href="https://maps.app.goo.gl/AgTFXgpJn1RoqyL98" target="_blank" class="map-btn" id="map-btn-text">🗺️ რუკაზე ნახვა (Google Maps)</a>
+            <br><br>
             <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="loc-cta">💬 ჩაეწერე ვიზიტზე</a>
         </div>
     </div>
@@ -450,6 +473,7 @@
                 minutes: "წუთი",
                 bookBtn: "ჩაწერა →",
                 locTitle: "📍 ლოკაცია & კონტაქტი",
+                mapBtn: "🗺️ რუკაზე ნახვა (Google Maps)",
                 locCta: "💬 ჩაეწერე ვიზიტზე"
             },
             en: {
@@ -473,6 +497,7 @@
                 minutes: "min",
                 bookBtn: "Book →",
                 locTitle: "📍 Location & Contact",
+                mapBtn: "🗺️ View on Map (Google Maps)",
                 locCta: "💬 Book Your Visit"
             },
             ru: {
@@ -496,6 +521,557 @@
                 minutes: "мин",
                 bookBtn: "Запись →",
                 locTitle: "📍 Локация и контакты",
+                mapBtn: "🗺️ Посмотреть на карте (Google Maps)",
+                locCta: "💬 Записаться на визит"
+            }
+        };
+
+        function setLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById('back-text').innerText = t.back;
+            document.getElementById('nav-book-text').innerText = t.navBook;
+            document.getElementById('hero-title').innerText = t.heroTitle;
+            document.getElementById('hero-sub').innerText = t.heroSub;
+            document.getElementById('hero-cta').innerText = t.heroCta;
+            document.getElementById('services-title').innerHTML = t.servicesTitle;
+
+            document.getElementById('s1-title').innerText = t.s1Title;
+            document.getElementById('s1-desc').innerText = t.s1Desc;
+            document.getElementById('s2-title').innerText = t.s2Titleთბილისის კაბინეტის Google Maps-ის ლოკაცია დამატებულია! 
+
+ახლა `tbilisi.html` გვერდზე ლოკაციის სექციაში გამოჩნდება როგორც პირდაპირი **„Google Maps-ზე ნახვა“** ღილაკი, ასევე ინტეგრირებული, ინტერაქტიული რუკა.
+
+---
+
+### 🚀 განახლებული `tbilisi.html` კოდი Google Maps-ის ლოკაციით:
+
+1. შედი GitHub-ზე შენს პროექტში **`GN-massage`**.
+2. დააჭირე ფაილს **`tbilisi.html`**.
+3. დააჭირე **ფანქრის ხატულას ✏️** (Edit file).
+4. წაშალე მთლიანი ძველი კოდი და ჩასვი ეს განახლებული ვერსია:
+
+```html
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GN Massage - თბილისი</title>
+    <link href="[https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap](https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap)" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans Georgian', sans-serif;
+        }
+
+        body {
+            background-color: #0b0f0c;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        /* Nav Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            background: rgba(11, 15, 12, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .back-link {
+            color: #a0a0a0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover { color: #D4AF37; }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #ffffff;
+        }
+
+        .brand-name span { color: #D4AF37; }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .lang-switch {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #777;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.2rem 0.4rem;
+            transition: color 0.3s;
+        }
+
+        .lang-btn:hover { color: #fff; }
+
+        .lang-btn.active {
+            color: #D4AF37;
+            border-bottom: 2px solid #D4AF37;
+        }
+
+        .book-nav-btn {
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .book-nav-btn:hover {
+            background: linear-gradient(135deg, #255232, #367348);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #ffffff;
+            max-width: 820px;
+            margin: 0 auto 1.2rem;
+            line-height: 1.35;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: #a0a0a0;
+            max-width: 740px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3);
+            transition: all 0.35s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(44, 94, 59, 0.5);
+            background: linear-gradient(135deg, #255232, #367348);
+        }
+
+        .cta-btn-alt {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: none;
+        }
+
+        .cta-btn-alt:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 3rem;
+        }
+
+        .section-title span { color: #D4AF37; }
+
+        /* Services Grid */
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .service-price {
+            font-size: 1.25rem;
+            color: #D4AF37;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .service-desc {
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 300;
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .service-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #777;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+        }
+
+        .service-meta span { color: #D4AF37; }
+
+        .book-item-btn {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .book-item-btn:hover { color: #fff; }
+
+        /* Location Section */
+        .location-section {
+            margin-top: 4rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.5rem 0 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-link {
+            color: #D4AF37;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .contact-link:hover { opacity: 0.8; }
+
+        .map-container {
+            margin-top: 1.5rem;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 650px) {
+            .hero h1 { font-size: 1.5rem; }
+            .service-header { flex-direction: column; gap: 0.3rem; }
+            header { padding: 1rem; flex-direction: column; gap: 0.8rem; }
+            .header-right { width: 100%; justify-content: space-between; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <a href="index.html" class="back-link" id="back-text">← ლოკაციის შეცვლა</a>
+            <div class="brand-name">GN <span>MASSAGE</span></div>
+        </div>
+        <div class="header-right">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('ka')">GE</button> | 
+                <button class="lang-btn" onclick="setLanguage('en')">EN</button> | 
+                <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+            </div>
+            <a href="[https://wa.me/995557998522](https://wa.me/995557998522)" target="_blank" class="book-nav-btn" id="nav-book-text">ჩაწერა</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 id="hero-title">დაივიწყე ზურგისა და კისრის ტკივილი — შენი სხეული იმსახურებს პროფესიონალურ აღდგენას</h1>
+        <p id="hero-sub">ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან. სივრცე თბილისში, სადაც ღრმა რელაქსაცია და სამკურნალო ეფექტი ერთიანდება.</p>
+        <div class="hero-btns">
+            <a href="[https://wa.me/995557998522](https://wa.me/995557998522)" target="_blank" class="cta-btn" id="hero-cta">💬 ჩაეწერე WhatsApp-ით</a>
+            <a href="[https://www.instagram.com/g.n.massage](https://www.instagram.com/g.n.massage)" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container">
+        <h2 class="section-title" id="services-title">🌿 <span>სერვისები</span> & თერაპიული პროგრამები</h2>
+
+        <div class="services-grid">
+
+            <!-- Card 1 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title" id="s1-title">ზურგის თერაპიული & სამკურნალო მასაჟი</div>
+                    <div class="service-price">75 ₾</div>
+                </div>
+                <div class="service-desc" id="s1-desc">
+                    სპეციალიზებული თერაპია ხერხემლის, კისრისა და წელის არეში დაგროვილი ქრონიკული დაძაბულობისა და ტკივილის მოსახსნელად. იდეალურია ჯდომითი სამუშაოსა და სტრესის შედეგად გამოწვეული დისკომფორტის წინააღმდეგ.
+                </div>
+                <div class="service-meta">
+                    <div>⏱ <span id="dur-text-1">ხანგრძლივობა:</span> <span>40-45 <span id="m1">წუთი</span></span></div>
+                    <a href="[https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20ზურგის%20სამკურნალო%20მასაჟი](https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20ზურგის%20სამკურნალო%20მასაჟი)" target="_blank" class="book-item-btn" id="b1">ჩაწერა →</a>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title" id="s2-title">სრული სხეულის აღდგენითი & ღრმა ქსოვილების (Deep Tissue) მასაჟი</div>
+                    <div class="service-price">110 ₾</div>
+                </div>
+                <div class="service-desc" id="s2-desc">
+                    კუნთების ღრმა შრეების, იოგებისა და ფასციების ინტენსიური დამუშავება. აუმჯობესებს სისხლის მიმოქცევას, ტონუსში მოჰყავს სხეული და უზრუნველყოფს კუნთების სწრაფ აღდგენას ფიზიკური დატვირთვის შემდეგ.
+                </div>
+                <div class="service-meta">
+                    <div>⏱ <span id="dur-text-2">ხანგრძლივობა:</span> <span>60 <span id="m2">წუთი</span></span></div>
+                    <a href="[https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20სრული%20სხეულის%20მასაჟი](https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20სრული%20სხეულის%20მასაჟი)" target="_blank" class="book-item-btn" id="b2">ჩაწერა →</a>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title" id="s3-title">ანტისტრესული & ღრმა რელაქსაციის თერაპია</div>
+                    <div class="service-price">100 ₾</div>
+                </div>
+                <div class="service-desc" id="s3-desc">
+                    მშვიდი, ჰარმონიული რიტმი და ნაზი ტექნიკა გონებისა და სხეულის სრული გადატვირთვისთვის. ხსნის დაღლილობას, აუმჯობესებს ძილის ხარისხს და აღადგენს ენერგეტიკულ ბალანსს.
+                </div>
+                <div class="service-meta">
+                    <div>⏱ <span id="dur-text-3">ხანგრძლივობა:</span> <span>60 <span id="m3">წუთი</span></span></div>
+                    <a href="[https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20რელაქსაციის%20მასაჟი](https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20რელაქსაციის%20მასაჟი)" target="_blank" class="book-item-btn" id="b3">ჩაწერა →</a>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title" id="s4-title">დეტოქსიკაციური ლიმფოდრენაჟული მასაჟი</div>
+                    <div class="service-price">100 ₾</div>
+                </div>
+                <div class="service-desc" id="s4-desc">
+                    სპეციალური ტექნიკა ლიმფური სისტემის სტიმულირებისთვის. ეფექტურად დევნის ორგანიზმიდან ტოქსინებსა და ზედმეტ სითხეს, ხსნის შეშუპებას და სხეულს ანიჭებს განსაკუთრებულ სიმსუბუქეს.
+                </div>
+                <div class="service-meta">
+                    <div>⏱ <span id="dur-text-4">ხანგრძლივობა:</span> <span>50-60 <span id="m4">წუთი</span></span></div>
+                    <a href="[https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20ლიმფოდრენაჟული%20მასაჟი](https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20ლიმფოდრენაჟული%20მასაჟი)" target="_blank" class="book-item-btn" id="b4">ჩაწერა →</a>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="service-card">
+                <div class="service-header">
+                    <div class="service-title" id="s5-title">სხეულის საკორექციო & მოდელირების თერაპია</div>
+                    <div class="service-price">80 ₾</div>
+                </div>
+                <div class="service-desc" id="s5-desc">
+                    მიზნობრივი მასაჟი პრობლემური ზონების დამუშავების, ქსოვილების ელასტიკურობის ამაღლებისა და კანის სტრუქტურის გაუმჯობესებისთვის. ეხმარება სხეულს მკვრივი და დახვეწილი ფორმების მიღებაში.
+                </div>
+                <div class="service-meta">
+                    <div>⏱ <span id="dur-text-5">ხანგრძლივობა:</span> <span>40 <span id="m5">წუთი</span></span></div>
+                    <a href="[https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20საკორექციო%20მასაჟი](https://wa.me/995557998522?text=გამარჯობა,%20მსურს%20ჩაწერა:%20საკორექციო%20მასაჟი)" target="_blank" class="book-item-btn" id="b5">ჩაწერა →</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Location & Contact Section -->
+        <div class="location-section">
+            <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 ლოკაცია & კონტაქტი</h3>
+            <div class="contact-info">
+                <div>📍 მისამართი: <a href="[https://maps.app.goo.gl/AgTFXgpJn1RoqyL98](https://maps.app.goo.gl/AgTFXgpJn1RoqyL98)" target="_blank" class="contact-link" id="map-link">Google Maps-ზე ნახვა 🗺️</a></div>
+                <div>📞 ტელეფონი: <a href="tel:+995557998522" class="contact-link">+995 557 99 85 22</a></div>
+                <div>💬 WhatsApp: <a href="[https://wa.me/995557998522](https://wa.me/995557998522)" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
+                <div>📸 Instagram: <a href="[https://www.instagram.com/g.n.massage](https://www.instagram.com/g.n.massage)" target="_blank" class="contact-link">@g.n.massage</a></div>
+            </div>
+
+            <!-- Interactive Map Embed -->
+            <div class="map-container">
+                <iframe 
+                    src="[https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQzJzEyLjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge](https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQzJzEyLjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge)" 
+                    width="100%" 
+                    height="280" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+
+            <a href="[https://wa.me/995557998522](https://wa.me/995557998522)" target="_blank" class="cta-btn" style="margin-top: 1.8rem;" id="loc-cta">💬 ჩაეწერე ვიზიტზე</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 GN Massage Tbilisi. ყველა უფლება დაცულია.
+    </footer>
+
+    <!-- Multilingual Script -->
+    <script>
+        const translations = {
+            ka: {
+                back: "← ლოკაციის შეცვლა",
+                navBook: "ჩაწერა",
+                heroTitle: "დაივიწყე ზურგისა და კისრის ტკივილი — შენი სხეული იმსახურებს პროფესიონალურ აღდგენას",
+                heroSub: "ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან. სივრცე თბილისში, სადაც ღრმა რელაქსაცია და სამკურნალო ეფექტი ერთიანდება.",
+                heroCta: "💬 ჩაეწერე WhatsApp-ით",
+                servicesTitle: "🌿 <span>სერვისები</span> & თერაპიული პროგრამები",
+                s1Title: "ზურგის თერაპიული & სამკურნალო მასაჟი",
+                s1Desc: "სპეციალიზებული თერაპია ხერხემლის, კისრისა და წელის არეში დაგროვილი ქრონიკული დაძაბულობისა და ტკივილის მოსახსნელად. იდეალურია ჯდომითი სამუშაოსა და სტრესის შედეგად გამოწვეული დისკომფორტის წინააღმდეგ.",
+                s2Title: "სრული სხეულის აღდგენითი & ღრმა ქსოვილების (Deep Tissue) მასაჟი",
+                s2Desc: "კუნთების ღრმა შრეების, იოგებისა და ფასციების ინტენსიური დამუშავება. აუმჯობესებს სისხლის მიმოქცევას, ტონუსში მოჰყავს სხეული და უზრუნველყოფს კუნთების სწრაფ აღდგენას ფიზიკური დატვირთვის შემდეგ.",
+                s3Title: "ანტისტრესული & ღრმა რელაქსაციის თერაპია",
+                s3Desc: "მშვიდი, ჰარმონიული რიტმი და ნაზი ტექნიკა გონებისა და სხეულის სრული გადატვირთვისთვის. ხსნის დაღლილობას, აუმჯობესებს ძილის ხარისხს და აღადგენს ენერგეტიკულ ბალანსს.",
+                s4Title: "დეტოქსიკაციური ლიმფოდრენაჟული მასაჟი",
+                s4Desc: "სპეციალური ტექნიკა ლიმფური სისტემის სტიმულირებისთვის. ეფექტურად დევნის ორგანიზმიდან ტოქსინებსა და ზედმეტ სითხეს, ხსნის შეშუპებას და სხეულს ანიჭებს განსაკუთრებულ სიმსუბუქეს.",
+                s5Title: "სხეულის საკორექციო & მოდელირების თერაპია",
+                s5Desc: "მიზნობრივი მასაჟი პრობლემური ზონების დამუშავების, ქსოვილების ელასტიკურობის ამაღლებისა და კანის სტრუქტურის გაუმჯობესებისთვის. ეხმარება სხეულს მკვრივი და დახვეწილი ფორმების მიღებაში.",
+                duration: "ხანგრძლივობა:",
+                minutes: "წუთი",
+                bookBtn: "ჩაწერა →",
+                locTitle: "📍 ლოკაცია & კონტაქტი",
+                mapText: "Google Maps-ზე ნახვა 🗺️",
+                locCta: "💬 ჩაეწერე ვიზიტზე"
+            },
+            en: {
+                back: "← Change Location",
+                navBook: "Book Now",
+                heroTitle: "Forget Back and Neck Pain — Your Body Deserves Professional Recovery",
+                heroSub: "Sedentary work, stress, and muscle tension? GN Massage's tailored therapeutic approach helps eliminate pain from the very first session. A premium space in Tbilisi where deep relaxation meets healing.",
+                heroCta: "💬 Book via WhatsApp",
+                servicesTitle: "🌿 <span>Services</span> & Therapeutic Programs",
+                s1Title: "Therapeutic & Healing Back Massage",
+                s1Desc: "Specialized therapy to relieve chronic tension and pain in the spine, neck, and lower back. Ideal against discomfort caused by desk work and stress.",
+                s2Title: "Full Body Recovery & Deep Tissue Massage",
+                s2Desc: "Intense work on deep muscle layers, tendons, and fascia. Improves blood circulation, tones the body, and ensures quick muscle recovery after exertion.",
+                s3Title: "Anti-Stress & Deep Relaxation Therapy",
+                s3Desc: "Calm, harmonious rhythm and gentle technique for complete mind and body reset. Relieves fatigue, improves sleep quality, and restores balance.",
+                s4Title: "Detoxifying Lymphatic Drainage Massage",
+                s4Desc: "Specialized technique to stimulate the lymphatic system. Effectively eliminates toxins and excess fluid, reduces swelling, and brings lightness.",
+                s5Title: "Body Sculpting & Modeling Therapy",
+                s5Desc: "Targeted massage to work on problem areas, enhance tissue elasticity, and improve skin structure. Helps achieve firm and refined body shapes.",
+                duration: "Duration:",
+                minutes: "min",
+                bookBtn: "Book →",
+                locTitle: "📍 Location & Contact",
+                mapText: "View on Google Maps 🗺️",
+                locCta: "💬 Book Your Visit"
+            },
+            ru: {
+                back: "← Сменить локацию",
+                navBook: "Записаться",
+                heroTitle: "Забудьте о боли в спине и шее — ваше тело заслуживает профессионального восстановления",
+                heroSub: "Сидячая работа, стресс и мышечное напряжение? Индивидуальный терапевтический подход GN Massage помогает устранить причину боли с первого сеанса. Пространство в Тбилиси, где глубокое расслабление сочетается с лечебным эффектом.",
+                heroCta: "💬 Записаться через WhatsApp",
+                servicesTitle: "🌿 <span>Услуги</span> и терапевтические программы",
+                s1Title: "Терапевтический и лечебный массаж спины",
+                s1Desc: "Специализированная терапия для снятия хронического напряжения и боли в позвоночнике, шее и пояснице. Идеально при сидячей работе и стрессе.",
+                s2Title: "Восстановительный массаж всего тела и Deep Tissue",
+                s2Desc: "Интенсивная проработка глубоких слоев мышц, сухожилий и фасций. Улучшает кровообращение, тонизирует тело и восстанавливает после нагрузок.",
+                s3Title: "Антистрессовая терапия и глубокое расслабление",
+                s3Desc: "Спокойный, гармоничный ритм и мягкая техника для полной перезагрузки ума и тела. Снимает усталость, улучшает сон и восстанавливает баланс.",
+                s4Title: "Детоксицирующий лимфодренажный массаж",
+                s4Desc: "Специальная техника для стимуляции лимфатической системы. Эффективно выводит токсины и лишнюю жидкость, снимает отеки и дарит легкость.",
+                s5Title: "Корректирующая и моделирующая терапия тела",
+                s5Desc: "Целевой массаж проработки проблемных зон, повышения эластичности тканей и улучшения структуры кожи. Помогает обрести подтянутые формы.",
+                duration: "Длительность:",
+                minutes: "мин",
+                bookBtn: "Запись →",
+                locTitle: "📍 Локация и контакты",
+                mapText: "Открыть в Google Maps 🗺️",
                 locCta: "💬 Записаться на визит"
             }
         };
@@ -527,6 +1103,7 @@
             }
 
             document.getElementById('loc-title').innerText = t.locTitle;
+            document.getElementById('map-link').innerText = t.mapText;
             document.getElementById('loc-cta').innerText = t.locCta;
 
             const buttons = document.querySelectorAll('.lang-btn');
