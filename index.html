@@ -4,248 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GN Massage - Welcome</title>
+
+    <!-- Favicon (ბრაუზერის ტაბის ხატულა) -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- Open Graph / Social Share (WhatsApp, Facebook, Instagram preview) -->
+    <meta property="og:title" content="GN Massage - პროფესიონალური მასაჟი & სხეულის აღდგენა">
+    <meta property="og:description" content="თბილისი & ბაკურიანი — ინდივიდუალურად მორგებული თერაპიული და სამკურნალო მასაჟი.">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:type" content="website">
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans Georgian', sans-serif;
-        }
-
-        body {
-            background-color: #0b0f0c;
-            background-image: radial-gradient(circle at center, #16241a 0%, #0b0f0c 75%);
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            text-align: center;
-            padding: 1.5rem;
-            overflow: hidden;
-        }
-
-        /* ხმის მართვის ღილაკი */
-        .music-control {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #D4AF37;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .music-control:hover {
-            transform: scale(1.1);
-            background: rgba(212, 175, 55, 0.2);
-        }
-
-        /* 3-წამიანი Intro Splash Screen */
-        .splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #0b0f0c;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            animation: fadeOutSplash 0.8s ease 2.5s forwards;
-            cursor: pointer;
-        }
-
-        .splash-logo {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: 4px;
-            color: #ffffff;
-            opacity: 0;
-            animation: fadeInLogo 1.2s ease 0.3s forwards;
-        }
-
-        .splash-logo span {
-            color: #D4AF37;
-        }
-
-        .splash-sub {
-            font-size: 0.85rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #888888;
-            margin-top: 0.8rem;
-            opacity: 0;
-            animation: fadeInLogo 1.2s ease 0.8s forwards;
-        }
-
-        @keyframes fadeInLogo {
-            0% { opacity: 0; transform: translateY(15px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeOutSplash {
-            0% { opacity: 1; visibility: visible; }
-            100% { opacity: 0; visibility: hidden; pointer-events: none; }
-        }
-
-        /* მთავარი ბარათი */
-        .welcome-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            padding: 3.5rem 2.2rem;
-            border-radius: 28px;
-            max-width: 460px;
-            width: 100%;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            opacity: 0;
-            animation: fadeInMain 1s ease 2.8s forwards;
-        }
-
-        @keyframes fadeInMain {
-            0% { opacity: 0; transform: scale(0.96); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-
-        .main-logo {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin-bottom: 0.4rem;
-        }
-
-        .main-logo span {
-            color: #D4AF37;
-        }
-
-        .subtitle {
-            font-size: 0.9rem;
-            color: #a0a0a0;
-            margin-bottom: 2.5rem;
-            font-weight: 300;
-            line-height: 1.5;
-            min-height: 2.7em;
-        }
-
-        .buttons-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .location-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.1rem 1.5rem;
-            border-radius: 16px;
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 600;
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .btn-tbilisi {
-            background: linear-gradient(135deg, #1e4027, #2c5e3b);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .btn-tbilisi:hover {
-            background: linear-gradient(135deg, #255232, #367348);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(44, 94, 59, 0.4);
-        }
-
-        .btn-bakuriani {
-            background: rgba(212, 175, 55, 0.08);
-            color: #ffffff;
-            border: 1px solid #D4AF37;
-        }
-
-        .btn-bakuriani:hover {
-            background: #D4AF37;
-            color: #0b0f0c;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35);
-        }
-
-        .lang-switch {
-            margin-top: 2.2rem;
-            font-size: 0.85rem;
-            color: #666666;
-            letter-spacing: 1px;
-        }
-
-        .lang-btn {
-            background: none;
-            border: none;
-            color: #777777;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            padding: 0.2rem 0.5rem;
-            transition: color 0.3s ease;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
+        body { background-color: #0b0f0c; background-image: radial-gradient(circle at center, #16241a 0%, #0b0f0c 75%); height: 100vh; display: flex; align-items: center; justify-content: center; color: #ffffff; text-align: center; padding: 1.5rem; overflow: hidden; }
+        .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0b0f0c; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; animation: fadeOutSplash 0.8s ease 2.5s forwards; cursor: pointer; }
+        .splash-logo-img { max-width: 150px; width: 50%; height: auto; opacity: 0; animation: fadeInLogo 1.2s ease 0.3s forwards; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.2)); }
+        .splash-sub { font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; color: #888888; margin-top: 1rem; opacity: 0; animation: fadeInLogo 1.2s ease 0.8s forwards; }
+        @keyframes fadeInLogo { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeOutSplash { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
+        .welcome-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.2); padding: 3rem 2.2rem; border-radius: 28px; max-width: 460px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6); opacity: 0; animation: fadeInMain 1s ease 2.8s forwards; }
+        @keyframes fadeInMain { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
+        .main-logo-img { max-width: 120px; width: 45%; height: auto; margin-bottom: 1rem; filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.15)); }
+        .subtitle { font-size: 0.9rem; color: #a0a0a0; margin-bottom: 2.2rem; font-weight: 300; line-height: 1.5; min-height: 2.7em; }
+        .buttons-container { display: flex; flex-direction: column; gap: 1.2rem; }
+        .location-btn { display: flex; align-items: center; justify-content: center; padding: 1.1rem 1.5rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        .btn-tbilisi { background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .btn-tbilisi:hover { background: linear-gradient(135deg, #255232, #367348); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(44, 94, 59, 0.4); }
+        .btn-bakuriani { background: rgba(212, 175, 55, 0.08); color: #ffffff; border: 1px solid #D4AF37; }
+        .btn-bakuriani:hover { background: #D4AF37; color: #0b0f0c; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35); }
+        .lang-switch { margin-top: 2rem; font-size: 0.85rem; color: #666666; letter-spacing: 1px; }
+        .lang-btn { background: none; border: none; color: #777777; font-size: 0.85rem; font-weight: 600; cursor: pointer; padding: 0.2rem 0.5rem; transition: color 0.3s ease; }
         .lang-btn:hover { color: #ffffff; }
-
-        .lang-btn.active {
-            color: #D4AF37;
-            border-bottom: 2px solid #D4AF37;
-        }
-
-        @media (max-width: 480px) {
-            .welcome-card { padding: 2.5rem 1.5rem; }
-            .splash-logo { font-size: 2.2rem; }
-        }
+        .lang-btn.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
+        @media (max-width: 480px) { .welcome-card { padding: 2.2rem 1.5rem; } .splash-logo-img { max-width: 120px; } }
     </style>
 </head>
-<body onclick="startAudio()">
+<body>
 
-    <!-- Yiruma - River Flows in You -->
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://ia800902.us.archive.org/28/items/YirumaRiverFlowsInYou_201703/Yiruma%20-%20River%20Flows%20in%20You.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- ხმის მართვის ღილაკი -->
-    <button class="music-control" id="music-btn" onclick="toggleMusic(event)" title="ხმის ჩართვა/გამორთვა">
-        🔊
-    </button>
-
-    <!-- 3-წამიანი Intro Splash Screen -->
+    <!-- Splash Screen -->
     <div class="splash-screen">
-        <div class="splash-logo">GN <span>MASSAGE</span></div>
+        <img src="logo.png" alt="GN Massage" class="splash-logo-img">
         <div class="splash-sub">Therapy & Wellness</div>
     </div>
 
-    <!-- მთავარი არჩევანის ბარათი -->
+    <!-- Main Welcome Card -->
     <div class="welcome-card">
-        <div class="main-logo">GN <span>MASSAGE</span></div>
+        <img src="logo.png" alt="GN Massage" class="main-logo-img">
         <p class="subtitle" id="sub-text">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
 
         <div class="buttons-container">
-            <a href="tbilisi.html" class="location-btn btn-tbilisi" id="btn-tbilisi-text">
-                📍 მასაჟი თბილისში
-            </a>
-            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">
-                ❄️ მასაჟი ბაკურიანში
-            </a>
+            <a href="tbilisi.html" class="location-btn btn-tbilisi" id="btn-tbilisi-text">📍 მასაჟი თბილისში</a>
+            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">❄️ მასაჟი ბაკურიანში</a>
         </div>
 
         <div class="lang-switch">
@@ -256,64 +66,29 @@
     </div>
 
     <script>
-        const audio = document.getElementById('bg-music');
-        const musicBtn = document.getElementById('music-btn');
-        let isAudioPlaying = false;
-
-        function startAudio() {
-            if (!isAudioPlaying) {
-                audio.volume = 0.5;
-                audio.play().then(() => {
-                    isAudioPlaying = true;
-                    musicBtn.innerHTML = "🔊";
-                }).catch(e => console.log("Autoplay blocked:", e));
-            }
-        }
-
-        function toggleMusic(event) {
-            event.stopPropagation();
-            if (audio.paused) {
-                audio.play();
-                musicBtn.innerHTML = "🔊";
-                isAudioPlaying = true;
-            } else {
-                audio.pause();
-                musicBtn.innerHTML = "🔇";
-                isAudioPlaying = false;
-            }
-        }
-
         const translations = {
-            ka: {
-                subtitle: "პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:",
-                btnTbilisi: "📍 მასაჟი თბილისში",
-                btnBakuriani: "❄️ მასაჟი ბაკურიანში"
-            },
-            en: {
-                subtitle: "Professional Massage & Body Recovery<br>Please select location:",
-                btnTbilisi: "📍 Massage in Tbilisi",
-                btnBakuriani: "❄️ Massage in Bakuriani"
-            },
-            ru: {
-                subtitle: "Профессиональный массаж и восстановление<br>Выберите локацию:",
-                btnTbilisi: "📍 Массаж в Тбилиси",
-                btnBakuriani: "❄️ Массаж в Бакуриани"
-            }
+            ka: { subtitle: "პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:", btnTbilisi: "📍 მასაჟი თბილისში", btnBakuriani: "❄️ მასაჟი ბაკურიანში" },
+            en: { subtitle: "Professional Massage & Body Recovery<br>Please select location:", btnTbilisi: "📍 Massage in Tbilisi", btnBakuriani: "❄️ Massage in Bakuriani" },
+            ru: { subtitle: "Профессиональный массаж и восстановление<br>Выберите локацию:", btnTbilisi: "📍 Массаж в Тбилиси", btnBakuriani: "❄️ Массаж в Бакуриани" }
         };
 
         function setLanguage(lang) {
+            localStorage.setItem('gn_massage_lang', lang);
             document.getElementById('sub-text').innerHTML = translations[lang].subtitle;
             document.getElementById('btn-tbilisi-text').innerHTML = translations[lang].btnTbilisi;
             document.getElementById('btn-bakuriani-text').innerHTML = translations[lang].btnBakuriani;
 
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            
             if (lang === 'ka') buttons[0].classList.add('active');
             if (lang === 'en') buttons[1].classList.add('active');
             if (lang === 'ru') buttons[2].classList.add('active');
         }
-    </script>
 
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('gn_massage_lang') || 'ka';
+            setLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
