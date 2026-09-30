@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GN Massage - თბილისი</title>
 
-    <!-- Circular Favicon Integration -->
+    <!-- Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
     <link rel="alternate icon" type="image/png" href="logo.png">
 
     <!-- Open Graph -->
     <meta property="og:title" content="GN Massage Tbilisi - პროფესიონალური მასაჟი">
     <meta property="og:description" content="თერაპიული, აღდგენითი და სამკურნალო მასაჟი თბილისში.">
-    <meta property="og:image" content="logo.png">
+    <meta property="og:image" content="therapist.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -61,6 +61,56 @@
         
         .book-item-btn { color: #D4AF37; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .book-item-btn:hover { color: #fff; }
+
+        /* Therapist About Section */
+        .therapist-section {
+            margin-top: 4rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .therapist-img-container {
+            flex-shrink: 0;
+            width: 220px;
+            height: 280px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .therapist-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .therapist-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .therapist-quote {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #D4AF37;
+            line-height: 1.4;
+        }
+
+        .therapist-bio {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+        }
         
         .location-section { margin-top: 4rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 24px; padding: 2.5rem 2rem; text-align: center; }
         .contact-info { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0 2rem; font-size: 1.1rem; }
@@ -70,7 +120,9 @@
         
         footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
         
-        @media (max-width: 650px) { 
+        @media (max-width: 768px) { 
+            .therapist-section { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
+            .therapist-img-container { width: 180px; height: 230px; margin: 0 auto; }
             .hero h1 { font-size: 1.5rem; } 
             .service-header { flex-direction: column; gap: 0.3rem; } 
             header { padding: 1rem; flex-direction: column; gap: 0.8rem; } 
@@ -169,6 +221,20 @@
             </div>
         </div>
 
+        <!-- Therapist Section -->
+        <div class="therapist-section">
+            <div class="therapist-img-container">
+                <img src="therapist.jpg" alt="GN Massage Therapist" class="therapist-img">
+            </div>
+            <div class="therapist-info">
+                <div class="therapist-quote" id="t-quote">„ჩემი მთავარი სერტიფიკატი — თქვენი გათავისუფლებული ზურგი და ღიმილია.“</div>
+                <div class="therapist-bio" id="t-bio">
+                    ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>
+                    ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილი, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.
+                </div>
+            </div>
+        </div>
+
         <div class="location-section">
             <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 ლოკაცია & კონტაქტი</h3>
             <div class="contact-info">
@@ -200,6 +266,8 @@
                 s3Title: "ანტისტრესული & ღრმა რელაქსაციის თერაპია", s3Desc: "მშვიდი, ჰარმონიული რიტმი და ნაზი ტექნიკა გონებისა და სხეულის სრული გადატვირთვისთვის. ხსნის დაღლილობას, აუმჯობესებს ძილის ხარისხს და აღადგენს ენერგეტიკულ ბალანსს.",
                 s4Title: "დეტოქსიკაციური ლიმფოდრენაჟული მასაჟი", s4Desc: "სპეციალური ტექნიკა ლიმფური სისტემის სტიმულირებისთვის. ეფექტურად დევნის ორგანიზმიდან ტოქსინებსა და ზედმეტ სითხეს, ხსნის შეშუპებას და სხეულს ანიჭებს განსაკუთრებულ სიმსუბუქეს.",
                 s5Title: "სხეულის საკორექციო & მოდელირების თერაპია", s5Desc: "მიზნობრივი მასაჟი პრობლემური ზონების დამუშავების, ქსოვილების ელასტიკურობის ამაღლებისა და კანის სტრუქტურის გაუმჯობესებისთვის. ეხმარება სხეულს მკვრივი და დახვეწილი ფორმების მიღებაში.",
+                tQuote: "„ჩემი მთავარი სერტიფიკატი — თქვენი გათავისუფლებული ზურგი და ღიმილია.“",
+                tBio: "ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილები, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.",
                 duration: "ხანგრძლივობა:", minutes: "წუთი", bookBtn: "ჩაწერა →", locTitle: "📍 ლოკაცია & კონტაქტი", mapText: "Google Maps-ზე ნახვა 🗺️", locCta: "💬 ჩაეწერე ვიზიტზე"
             },
             en: {
@@ -212,6 +280,8 @@
                 s3Title: "Anti-Stress & Deep Relaxation Therapy", s3Desc: "Calm, harmonious rhythm and gentle technique for complete mind and body reset. Relieves fatigue, improves sleep quality, and restores balance.",
                 s4Title: "Detoxifying Lymphatic Drainage Massage", s4Desc: "Specialized technique to stimulate the lymphatic system. Effectively eliminates toxins and excess fluid, reduces swelling, and brings lightness.",
                 s5Title: "Body Sculpting & Modeling Therapy", s5Desc: "Targeted massage to work on problem areas, enhance tissue elasticity, and improve skin structure. Helps achieve firm and refined body shapes.",
+                tQuote: "“My primary certification is your pain-free back and glowing smile.”",
+                tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients who regain their mobility and peace of mind.",
                 duration: "Duration:", minutes: "min", bookBtn: "Book →", locTitle: "📍 Location & Contact", mapText: "View on Google Maps 🗺️", locCta: "💬 Book Your Visit"
             },
             ru: {
@@ -224,6 +294,8 @@
                 s3Title: "Антистрессовая терапия и глубокое расслабление", s3Desc: "Спокойный, гармоничный ритм и мягкая техника для полной перезагрузки ума и тела. Снимает усталость, улучшает сон и восстанавливает баланс.",
                 s4Title: "Детоксицирующий лимфодренажный массаж", s4Desc: "Специальная техника для стимуляции лимфатической системы. Эффективно выводит токсины и лишнюю жидкость, снимает отеки и дарит легкость.",
                 s5Title: "Корректирующая и моделирующая терапия тела", s5Desc: "Целевой массаж проработки проблемных зон, повышения эластичности тканей и улучшения структуры кожи. Помогает обрести подтянутые формы.",
+                tQuote: "«Мой главный сертификат — ваша здоровая спина и улыбка без боли.»",
+                tBio: "Для меня массаж — это не просто техника, а глубокое понимание механики тела, точечная проработка очагов напряжения и индивидуальный подход к восстановлению каждого клиента.<br><br>Мои регалии не измеряются бумагами на стене. Главная награда — сотни довольных, освобожденных от боли и стресса людей.",
                 duration: "Длительность:", minutes: "мин", bookBtn: "Запись →", locTitle: "📍 Локация и контакты", mapText: "Открыть в Google Maps 🗺️", locCta: "💬 Записаться на визит"
             }
         };
@@ -255,6 +327,9 @@
                 document.getElementById(`m${i}`).innerText = t.minutes;
                 document.getElementById(`b${i}`).innerText = t.bookBtn;
             }
+
+            document.getElementById('t-quote').innerText = t.tQuote;
+            document.getElementById('t-bio').innerHTML = t.tBio;
 
             document.getElementById('loc-title').innerText = t.locTitle;
             document.getElementById('map-link').innerText = t.mapText;
