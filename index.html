@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GN Massage - Welcome</title>
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
+    <!-- Circular Favicon Integration (ლოგო წრეში ბრაუზერის ტაბისთვის) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
+    <link rel="alternate icon" type="image/png" href="logo.png">
 
     <!-- Open Graph -->
     <meta property="og:title" content="GN Massage - პროფესიონალური მასაჟი & სხეულის აღდგენა">
@@ -22,36 +23,37 @@
         /* Splash Screen */
         .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0b0f0c; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; animation: fadeOutSplash 0.8s ease 2.5s forwards; cursor: pointer; }
         
+        /* კიდევ უფრო გაზრდილი Splash ლოგო */
         .splash-logo-img { 
-            width: 280px; 
-            max-width: 80%; 
+            width: 340px; 
+            max-width: 85%; 
             height: auto; 
             opacity: 0; 
             animation: fadeInLogo 1.2s ease 0.3s forwards; 
-            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.45)); 
+            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5)); 
         }
         
-        .splash-sub { font-size: 0.95rem; letter-spacing: 4px; text-transform: uppercase; color: #D4AF37; margin-top: 1.5rem; opacity: 0; animation: fadeInLogo 1.2s ease 0.8s forwards; font-weight: 600; }
+        .splash-sub { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; color: #D4AF37; margin-top: 1.8rem; opacity: 0; animation: fadeInLogo 1.2s ease 0.8s forwards; font-weight: 600; }
         
         @keyframes fadeInLogo { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
         @keyframes fadeOutSplash { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
         
         /* Welcome Card */
-        .welcome-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.22); padding: 3.5rem 2.5rem; border-radius: 32px; max-width: 480px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); opacity: 0; animation: fadeInMain 1s ease 2.8s forwards; }
+        .welcome-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.22); padding: 3.5rem 2.5rem; border-radius: 32px; max-width: 500px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); opacity: 0; animation: fadeInMain 1s ease 2.8s forwards; }
         @keyframes fadeInMain { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
         
-        /* პროპორციულად გაზრდილი ლოგო ბარათში */
+        /* კიდევ უფრო გაზრდილი ლოგო ბარათში */
         .main-logo-img { 
-            width: 210px; 
-            max-width: 75%; 
+            width: 260px; 
+            max-width: 85%; 
             height: auto; 
-            margin-bottom: 1.5rem; 
-            filter: drop-shadow(0 0 16px rgba(212, 175, 55, 0.38)); 
+            margin-bottom: 1.8rem; 
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.45)); 
             transition: transform 0.4s ease;
         }
 
         .main-logo-img:hover {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
         
         .subtitle { font-size: 0.95rem; color: #a0a0a0; margin-bottom: 2.4rem; font-weight: 300; line-height: 1.6; min-height: 2.7em; }
@@ -66,11 +68,11 @@
         .lang-btn:hover { color: #ffffff; }
         .lang-btn.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
         
-        /* Mobile Responsive adjustment */
+        /* Responsive adjustments for Mobile */
         @media (max-width: 480px) { 
             .welcome-card { padding: 2.8rem 1.6rem; } 
-            .splash-logo-img { width: 220px; } 
-            .main-logo-img { width: 170px; margin-bottom: 1.2rem; } 
+            .splash-logo-img { width: 260px; } 
+            .main-logo-img { width: 210px; margin-bottom: 1.4rem; } 
             .subtitle { font-size: 0.9rem; margin-bottom: 2rem; }
         }
     </style>
@@ -90,7 +92,7 @@
 
         <div class="buttons-container">
             <a href="tbilisi.html" class="location-btn btn-tbilisi" id="btn-tbilisi-text">📍 მასაჟი თბილისში</a>
-            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">❄️️ მასაჟი ბაკურიანში</a>
+            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">❄️ მასაჟი ბაკურიანში</a>
         </div>
 
         <div class="lang-switch">
