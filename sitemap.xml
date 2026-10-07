@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gnmassage.github.io/GN-massage/</loc>
+    <loc>https://gn-massage.vercel.app/</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://gnmassage.github.io/GN-massage/tbilisi.html</loc>
+    <loc>https://gn-massage.vercel.app/tbilisi.html</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gnmassage.github.io/GN-massage/bakuriani.html</loc>
+    <loc>https://gn-massage.vercel.app/bakuriani.html</loc>
     <lastmod>2026-10-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
