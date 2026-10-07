@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GN Massage - ბაკურიანი</title>
 
-    <!-- Favicon Integration -->
+    <!-- Circular Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
     <link rel="alternate icon" type="image/png" href="logo.png">
 
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
-        body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; }
+        body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; padding-bottom: 70px; }
 
         header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; background: rgba(11, 15, 12, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(212, 175, 55, 0.15); backdrop-filter: blur(10px); }
         .header-left { display: flex; align-items: center; gap: 1.5rem; }
@@ -35,9 +35,11 @@
         .book-nav-btn { background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #fff; padding: 0.6rem 1.2rem; border-radius: 12px; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s; }
         .book-nav-btn:hover { background: linear-gradient(135deg, #255232, #367348); }
 
-        .hero { padding: 5rem 1.5rem 4rem; text-align: center; background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .hero { padding: 5rem 1.5rem 3.5rem; text-align: center; background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
         .hero h1 { font-size: 2.1rem; font-weight: 700; color: #ffffff; max-width: 820px; margin: 0 auto 1.2rem; line-height: 1.35; }
-        .hero p { font-size: 1rem; color: #a0a0a0; max-width: 740px; margin: 0 auto 2.5rem; font-weight: 300; }
+        .hero p { font-size: 1rem; color: #a0a0a0; max-width: 740px; margin: 0 auto 1.8rem; font-weight: 300; }
+        
+        .scarcity-badge { display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid #D4AF37; color: #D4AF37; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.8rem; }
         .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
         .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.35s; }
@@ -62,7 +64,7 @@
         .book-item-btn { color: #D4AF37; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .book-item-btn:hover { color: #fff; }
 
-        /* Therapist About Section */
+        /* Therapist Section */
         .therapist-section {
             margin-top: 4rem;
             background: rgba(255, 255, 255, 0.02);
@@ -74,51 +76,33 @@
             gap: 2.5rem;
             backdrop-filter: blur(10px);
         }
+        .therapist-img-container { flex-shrink: 0; width: 220px; height: 280px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .therapist-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .therapist-info { display: flex; flex-direction: column; gap: 1rem; }
+        .therapist-quote { font-size: 1.2rem; font-weight: 700; color: #D4AF37; line-height: 1.4; }
+        .therapist-bio { color: #b0b0b0; font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
 
-        .therapist-img-container {
-            flex-shrink: 0;
-            width: 220px;
-            height: 280px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* FAQ Section */
+        .faq-section { margin-top: 4rem; }
+        .faq-container { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .faq-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; overflow: hidden; }
+        .faq-question { padding: 1.2rem 1.5rem; font-size: 1rem; font-weight: 600; color: #ffffff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        .faq-question::after { content: '+'; font-size: 1.3rem; color: #D4AF37; transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; color: #a0a0a0; font-size: 0.9rem; font-weight: 300; line-height: 1.6; }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1.2rem; max-height: 200px; }
 
-        .therapist-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .therapist-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .therapist-quote {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #D4AF37;
-            line-height: 1.4;
-        }
-
-        .therapist-bio {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-
+        /* Location */
         .location-section { margin-top: 4rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 24px; padding: 2.5rem 2rem; text-align: center; }
         .contact-info { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0 2rem; font-size: 1.1rem; }
         .contact-link { color: #D4AF37; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
         .contact-link:hover { opacity: 0.8; }
         .map-container { margin-top: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); }
 
-        footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
+        /* Mobile Floating CTA Button */
+        .floating-cta { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 420px; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; border: 1px solid #D4AF37; padding: 0.9rem 1.2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); z-index: 999; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+
+        footer { text-align: center; padding: 3rem 1.5rem 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
 
         @media (max-width: 768px) { 
             .therapist-section { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
@@ -150,6 +134,7 @@
     <section class="hero">
         <h1 id="hero-title">სრული აღდგენა & რელაქსაცია ბაკურიანის მთებში</h1>
         <p id="hero-sub">აქტიური სრიალის, ყინვასა და სუფთა ჰაერზე დასვენების შემდეგ, დაუბრუნეთ სხეულს ენერგია და სიმსუბუქე. GN Massage Bakuriani გთავაზობთ ექსკლუზიურ გამაჯანსაღებელ თერაპიებს უშუალოდ კურორტზე.</p>
+        <div class="scarcity-badge" id="scarcity-text">⚡ სეზონური მიღება — გთხოვთ, დაჯავშნოთ ვიზიტი 1-2 დღით ადრე</div>
         <div class="hero-btns">
             <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="hero-cta">❄️ დაჯავშნე ვიზიტი ბაკურიანში</a>
             <a href="https://www.instagram.com/g.n.massage" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
@@ -223,6 +208,26 @@
             </div>
         </div>
 
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title" id="faq-title">❓ <span>ხშირად</span> დასმული კითხვები</h2>
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq1">რა უნდა ვიქონიო თან ვიზიტისას?</div>
+                    <div class="faq-answer" id="fa1">არაფრის წამოღება არ გჭირდებათ. GN Massage-ის სივრცეში დაგხვდებათ სრულიად სუფთა, ერთჯერადი და ჰიგიენური ყველა საჭირო აქსესუარი.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq2">რამდენი სეანსია საჭირო შედეგის დასანახად?</div>
+                    <div class="faq-answer" id="fa2">მნიშვნელოვან შვებასა და კუნთოვან მოშვებულობას იგრძნობთ პირველივე სეანსიდან. აქტიური სრიალისა და სპორტული დატვირთვისას რეკომენდებულია 2-3 აღდგენითი პროცედურა.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq3">როგორ ხდება ჩაწერა და გადახდა?</div>
+                    <div class="faq-answer" id="fa3">ჩაწერა ხდება ძალიან მარტივად WhatsApp-ის ღილაკზე დაჭერით. ანგარიშსწორება ხორციელდება ვიზიტის დასრულების შემდეგ ადგილზე.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location -->
         <div class="location-section">
             <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 ლოკაცია & კონტაქტი — ბაკურიანი</h3>
             <div class="contact-info">
@@ -241,14 +246,24 @@
         </div>
     </div>
 
+    <!-- Floating Mobile CTA -->
+    <a href="https://wa.me/995557998522" target="_blank" class="floating-cta" id="float-cta">
+        <span>💬 ჩაეწერე ვიზიტზე WhatsApp-ით</span>
+    </a>
+
     <footer>© 2026 GN Massage Bakuriani. ყველა უფლება დაცულია.</footer>
 
     <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+
         const translations = {
             ka: {
                 back: "← ლოკაციის შეცვლა", navBook: "ჩაწერა",
                 heroTitle: "სრული აღდგენა & რელაქსაცია ბაკურიანის მთებში",
                 heroSub: "აქტიური სრიალის, ყინვასა და სუფთა ჰაერზე დასვენების შემდეგ, დაუბრუნეთ სხეულს ენერგია და სიმსუბუქე. GN Massage Bakuriani გთავაზობთ ექსკლუზიურ გამაჯანსაღებელ თერაპიებს უშუალოდ კურორტზე.",
+                scarcity: "⚡ სეზონური მიღება — გთხოვთ, დაჯავშნოთ ვიზიტი 1-2 დღით ადრე",
                 heroCta: "❄️ დაჯავშნე ვიზიტი ბაკურიანში", servicesTitle: "❄️ <span>სერვისები</span> & მთის თერაპიები",
                 s1Title: "მოთხილამურის & სპორტული აღდგენითი თერაპია (Deep Tissue)", s1Desc: "სპეციალიზებული ღრმა მასაჟი სრიალისა და ინტენსიური ფიზიკური დატვირთვის შემდეგ. სწრაფად ხსნის კუნთოვან დაღლილობას, ტკივილს და აღადგენს მოძრაობის სრულ თავისუფლებას.",
                 s2Title: "მთის ანტისტრესული & რელაქსაციური მასაჟი", s2Desc: "მშვიდი, ჰარმონიული თერაპია მთის სიმშვიდეში სრული განტვირთვისთვის. იდეალურია სტრესის მოსახსნელად, ძილის გაუმჯობესებისა და სხეულის ენერგეტიკული ბალანსის აღსადგენად.",
@@ -256,25 +271,35 @@
                 s4Title: "აღდგენითი ლიმფოდრენაჟი & დეტოქსი", s4Desc: "ხსნის შეშუპებას, აუმჯობესებს ცირკულაციას და სხეულს ანიჭებს განსაკუთრებულ სიმსუბუქეს მთის აქტიური დასვენების დღეებში.",
                 tQuote: "„ჩემი მთავარი სერტიფიკატი — თქვენი გათავისუფლებული ზურგი და ღიმილია.“",
                 tBio: "ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილი, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.",
-                duration: "ხანგრძლივობა:", minutes: "წუთი", bookBtn: "ჩაწერა →", locTitle: "📍 ლოკაცია & კონტაქტი — ბაკურიანი", mapText: "Google Maps-ზე ნახვა 🗺️", hoursText: "სამუშაო საათები:", locCta: "💬 ჩაეწერე ვიზიტზე"
+                faqTitle: "❓ <span>ხშირად</span> დასმული კითხვები",
+                fq1: "რა უნდა ვიქონიო თან ვიზიტისას?", fa1: "არაფრის წამოღება არ გჭირდებათ. GN Massage-ის სივრცეში დაგხვდებათ სრულიად სუფთა, ერთჯერადი და ჰიგიენური ყველა საჭირო აქსესუარი.",
+                fq2: "რამდენი სეანსია საჭირო შედეგის დასანახად?", fa2: "მნიშვნელოვან შვებასა და კუნთოვან მოშვებულობას იგრძნობთ პირველივე სეანსიდან. აქტიური სრიალისა და სპორტული დატვირთვისას რეკომენდებულია 2-3 აღდგენითი პროცედურა.",
+                fq3: "როგორ ხდება ჩაწერა და გადახდა?", fa3: "ჩაწერა ხდება ძალიან მარტივად WhatsApp-ის ღილაკზე დაჭერით. ანგარიშსწორება ხორციელდება ვიზიტის დასრულების შემდეგ ადგილზე.",
+                duration: "ხანგრძლივობა:", minutes: "წუთი", bookBtn: "ჩაწერა →", locTitle: "📍 ლოკაცია & კონტაქტი — ბაკურიანი", mapText: "Google Maps-ზე ნახვა 🗺️", hoursText: "სამუშაო საათები:", locCta: "💬 ჩაეწერე ვიზიტზე", floatCta: "💬 ჩაეწერე ვიზიტზე WhatsApp-ით"
             },
             en: {
                 back: "← Change Location", navBook: "Book Now",
                 heroTitle: "Full Recovery & Relaxation in the Mountains of Bakuriani",
                 heroSub: "After active skiing and fresh mountain air, restore your body's energy and lightness. GN Massage Bakuriani offers exclusive wellness therapies directly at the resort.",
+                scarcity: "⚡ Seasonal admission — Please book your visit 1-2 days in advance",
                 heroCta: "❄️ Book a Visit in Bakuriani", servicesTitle: "❄️ <span>Services</span> & Mountain Therapies",
                 s1Title: "Skiers & Sports Recovery Therapy (Deep Tissue)", s1Desc: "Specialized deep tissue massage after skiing and intense activity. Quickly relieves muscle fatigue and pain, restoring full freedom of movement.",
                 s2Title: "Mountain Anti-Stress & Relaxation Massage", s2Desc: "Calm, harmonious therapy for total relaxation in mountain serenity. Ideal for stress relief, sleep improvement, and restoring balance.",
                 s3Title: "Therapeutic Back & Neck Massage", s3Desc: "Targeted massage to relieve tension in the spine and neck. Effectively removes discomfort from skiing or traveling.",
                 s4Title: "Restorative Lymphatic Drainage & Detox", s4Desc: "Relieves swelling, improves circulation, and brings lightness during active mountain holidays.",
                 tQuote: "“My primary certification is your pain-free back and glowing smile.”",
-                tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients who regain their mobility and peace of mind.",
-                duration: "Duration:", minutes: "min", bookBtn: "Book →", locTitle: "📍 Location & Contact — Bakuriani", mapText: "View on Google Maps 🗺️", hoursText: "Working Hours:", locCta: "💬 Book Your Visit"
+                tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients.",
+                faqTitle: "❓ <span>Frequently</span> Asked Questions",
+                fq1: "What should I bring with me?", fa1: "You don't need to bring anything. All fresh, single-use, and hygienic accessories are provided at GN Massage.",
+                fq2: "How many sessions do I need for results?", fa2: "You will feel significant relief right after the first session. For active skiing and sports, 2-3 recovery procedures are recommended.",
+                fq3: "How do I book and pay?", fa3: "Booking is effortless by clicking the WhatsApp button. Payment is made on-site after your visit.",
+                duration: "Duration:", minutes: "min", bookBtn: "Book →", locTitle: "📍 Location & Contact — Bakuriani", mapText: "View on Google Maps 🗺️", hoursText: "Working Hours:", locCta: "💬 Book Your Visit", floatCta: "💬 Book via WhatsApp"
             },
             ru: {
                 back: "← Сменить локацию", navBook: "Записаться",
                 heroTitle: "Полное восстановление и релаксация в горах Бакуриани",
                 heroSub: "После активного катания и свежего горного воздуха верните телу энергию и легкость. GN Massage Bakuriani предлагает эксклюзивные оздоровительные терапии прямо на курорте.",
+                scarcity: "⚡ Сезонный прием — пожалуйста, бронируйте визит за 1-2 дня",
                 heroCta: "❄️ Забронировать визит в Бакуриани", servicesTitle: "❄️ <span>Услуги</span> и горные терапии",
                 s1Title: "Восстановительная терапия для лыжников и спортсменов (Deep Tissue)", s1Desc: "Специализированный глубокий массаж после катания и нагрузок. Быстро снимает мышечную усталость, боль и возвращает свободу движений.",
                 s2Title: "Горный антистрессовый и расслабляющий массаж", s2Desc: "Спокойная терапия в горной тишине для полной перезагрузки. Идеально для снятия стресса, улучшения сна и восстановления баланса.",
@@ -282,7 +307,11 @@
                 s4Title: "Восстановительный лимфодренаж и детокс", s4Desc: "Снимает отеки, улучшает циркуляцию и дарит легкость во время активного отдыха в горах.",
                 tQuote: "«Мой главный сертификат — ваша здоровая спина и улыбка без боли.»",
                 tBio: "Для меня массаж — это не просто техника, а глубокое понимание механики тела, точечная проработка очагов напряжения и индивидуальный подход к восстановлению каждого клиента.<br><br>Мои регалии не измеряются бумагами на стене. Главная награда — сотни довольных, освобожденных от боли и стресса людей.",
-                duration: "Длительность:", minutes: "мин", bookBtn: "Запись →", locTitle: "📍 Локация и контакты — Бакуриани", mapText: "Открыть в Google Maps 🗺️", hoursText: "Часы работы:", locCta: "💬 Записаться на визит"
+                faqTitle: "❓ <span>Часто</span> задаваемые вопросы",
+                fq1: "Что нужно брать с собой?", fa1: "Брать с собой ничего не нужно. В GN Massage предоставляются все необходимые одноразовые гигиенические принадлежности.",
+                fq2: "Сколько сеансов нужно для результата?", fa2: "Значительное облегчение вы почувствуете с первого сеанса. При катании и нагрузках рекомендуется 2-3 восстановительные процедуры.",
+                fq3: "Как забронировать и оплатить?", fa3: "Запись очень простая — в один клик через WhatsApp. Оплата производится на месте после сеанса.",
+                duration: "Длительность:", minutes: "мин", bookBtn: "Запись →", locTitle: "📍 Локация и контакты — Бакуриани", mapText: "Открыть в Google Maps 🗺️", hoursText: "Часы работы:", locCta: "💬 Записаться на визит", floatCta: "💬 Записаться через WhatsApp"
             }
         };
 
@@ -294,6 +323,7 @@
             document.getElementById('nav-book-text').innerText = t.navBook;
             document.getElementById('hero-title').innerText = t.heroTitle;
             document.getElementById('hero-sub').innerText = t.heroSub;
+            document.getElementById('scarcity-text').innerText = t.scarcity;
             document.getElementById('hero-cta').innerText = t.heroCta;
             document.getElementById('services-title').innerHTML = t.servicesTitle;
 
@@ -315,10 +345,16 @@
             document.getElementById('t-quote').innerText = t.tQuote;
             document.getElementById('t-bio').innerHTML = t.tBio;
 
+            document.getElementById('faq-title').innerHTML = t.faqTitle;
+            document.getElementById('fq1').innerText = t.fq1; document.getElementById('fa1').innerText = t.fa1;
+            document.getElementById('fq2').innerText = t.fq2; document.getElementById('fa2').innerText = t.fa2;
+            document.getElementById('fq3').innerText = t.fq3; document.getElementById('fa3').innerText = t.fa3;
+
             document.getElementById('loc-title').innerText = t.locTitle;
             document.getElementById('map-link').innerText = t.mapText;
             document.getElementById('hours-text').innerText = t.hoursText;
             document.getElementById('loc-cta').innerText = t.locCta;
+            document.getElementById('float-cta').innerText = t.floatCta;
 
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
