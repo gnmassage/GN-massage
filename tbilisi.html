@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GN Massage - თბილისი</title>
 
-    <!-- Favicon Integration -->
+    <!-- Circular Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
     <link rel="alternate icon" type="image/png" href="logo.png">
 
@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
-        body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; }
+        body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; padding-bottom: 70px; }
         
         header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; background: rgba(11, 15, 12, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(212, 175, 55, 0.15); backdrop-filter: blur(10px); }
         .header-left { display: flex; align-items: center; gap: 1.5rem; }
@@ -35,9 +35,11 @@
         .book-nav-btn { background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #fff; padding: 0.6rem 1.2rem; border-radius: 12px; text-decoration: none; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s; }
         .book-nav-btn:hover { background: linear-gradient(135deg, #255232, #367348); }
         
-        .hero { padding: 5rem 1.5rem 4rem; text-align: center; background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
+        .hero { padding: 5rem 1.5rem 3.5rem; text-align: center; background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%); border-bottom: 1px solid rgba(212, 175, 55, 0.1); }
         .hero h1 { font-size: 2.1rem; font-weight: 700; color: #ffffff; max-width: 820px; margin: 0 auto 1.2rem; line-height: 1.35; }
-        .hero p { font-size: 1rem; color: #a0a0a0; max-width: 740px; margin: 0 auto 2.5rem; font-weight: 300; }
+        .hero p { font-size: 1rem; color: #a0a0a0; max-width: 740px; margin: 0 auto 1.8rem; font-weight: 300; }
+        
+        .scarcity-badge { display: inline-block; background: rgba(212, 175, 55, 0.1); border: 1px solid #D4AF37; color: #D4AF37; padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.8rem; }
         .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
         
         .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.35s; }
@@ -62,7 +64,7 @@
         .book-item-btn { color: #D4AF37; text-decoration: none; font-weight: 600; transition: color 0.3s; }
         .book-item-btn:hover { color: #fff; }
 
-        /* Therapist About Section */
+        /* Therapist Section */
         .therapist-section {
             margin-top: 4rem;
             background: rgba(255, 255, 255, 0.02);
@@ -74,51 +76,41 @@
             gap: 2.5rem;
             backdrop-filter: blur(10px);
         }
+        .therapist-img-container { flex-shrink: 0; width: 220px; height: 280px; border-radius: 20px; overflow: hidden; border: 2px solid rgba(212, 175, 55, 0.4); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+        .therapist-img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+        .therapist-info { display: flex; flex-direction: column; gap: 1rem; }
+        .therapist-quote { font-size: 1.2rem; font-weight: 700; color: #D4AF37; line-height: 1.4; }
+        .therapist-bio { color: #b0b0b0; font-size: 0.95rem; font-weight: 300; line-height: 1.7; }
 
-        .therapist-img-container {
-            flex-shrink: 0;
-            width: 220px;
-            height: 280px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
+        /* Social Proof / Reviews */
+        .reviews-section { margin-top: 4rem; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .review-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.08); padding: 1.5rem; border-radius: 18px; }
+        .review-stars { color: #D4AF37; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .review-text { font-size: 0.9rem; color: #cccccc; font-weight: 300; line-height: 1.5; margin-bottom: 1rem; font-style: italic; }
+        .review-author { font-size: 0.85rem; color: #888888; font-weight: 600; }
 
-        .therapist-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
+        /* FAQ Section */
+        .faq-section { margin-top: 4rem; }
+        .faq-container { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+        .faq-item { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 16px; overflow: hidden; }
+        .faq-question { padding: 1.2rem 1.5rem; font-size: 1rem; font-weight: 600; color: #ffffff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; user-select: none; }
+        .faq-question::after { content: '+'; font-size: 1.3rem; color: #D4AF37; transition: transform 0.3s; }
+        .faq-item.active .faq-question::after { content: '−'; }
+        .faq-answer { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; color: #a0a0a0; font-size: 0.9rem; font-weight: 300; line-height: 1.6; }
+        .faq-item.active .faq-answer { padding: 0 1.5rem 1.2rem; max-height: 200px; }
 
-        .therapist-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .therapist-quote {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #D4AF37;
-            line-height: 1.4;
-        }
-
-        .therapist-bio {
-            color: #b0b0b0;
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-        }
-        
+        /* Location */
         .location-section { margin-top: 4rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 24px; padding: 2.5rem 2rem; text-align: center; }
         .contact-info { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0 2rem; font-size: 1.1rem; }
         .contact-link { color: #D4AF37; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
         .contact-link:hover { opacity: 0.8; }
         .map-container { margin-top: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); }
+
+        /* Mobile Floating CTA Button */
+        .floating-cta { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); width: calc(100% - 30px); max-width: 420px; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; border: 1px solid #D4AF37; padding: 0.9rem 1.2rem; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1rem; text-align: center; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7); z-index: 999; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
         
-        footer { text-align: center; padding: 3rem 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
+        footer { text-align: center; padding: 3rem 1.5rem 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
         
         @media (max-width: 768px) { 
             .therapist-section { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
@@ -149,7 +141,8 @@
 
     <section class="hero">
         <h1 id="hero-title">დაივიწყე ზურგისა და კისრის ტკივილი — შენი სხეული იმსახურებს პროფესიონალურ აღდგენას</h1>
-        <p id="hero-sub">ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან. სივრცე თბილისში, სადაც ღრმა რელაქსაცია და სამკურნალო ეფექტი ერთიანდება.</p>
+        <p id="hero-sub">ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან.</p>
+        <div class="scarcity-badge" id="scarcity-text">⚡ მიღება ხდება მხოლოდ წინასწარი ჩაწერით (დღეში 4-5 პაციენტი)</div>
         <div class="hero-btns">
             <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="hero-cta">💬 ჩაეწერე WhatsApp-ით</a>
             <a href="https://www.instagram.com/g.n.massage" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
@@ -235,6 +228,48 @@
             </div>
         </div>
 
+        <!-- Social Proof / Reviews -->
+        <div class="reviews-section">
+            <h2 class="section-title" id="rev-title">⭐ <span>4.9/5</span> კმაყოფილი პაციენტების შეფასებები</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text" id="r1-text">„3 სეანსის შემდეგ კისრისა და ბეჭების ქრონიკული ტკივილი სრულიად გამიქრა. ჯდომითი სამუშაოს გამო ძალიან ვიტანჯებოდი, დიდი მადლობა პროფესიონალიზმისთვის!“</p>
+                    <div class="review-author" id="r1-auth">— მარიამი K., IT სპეციალისტი</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text" id="r2-text">„საუკეთესო ღრმა მასაჟი თბილისში. ინტენსიური ვარჯიშის შემდეგ კუნთები ძალიან სწრაფად აღმიდგა. გარემო არის იდეალურად სუფთა და მშვიდი.“</p>
+                    <div class="review-author" id="r2-auth">— გიორგი B.</div>
+                </div>
+                <div class="review-card">
+                    <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                    <p class="review-text" id="r3-text">„ძალიან ყურადღებიანი მიდგომა. პირველივე პროცედურის შემდეგ ვიგრძენი საოცარი სიმსუბუქე. ყველას ვურჩევ!“</p>
+                    <div class="review-author" id="r3-auth">— ელენე M.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title" id="faq-title">❓ <span>ხშირად</span> დასმული კითხვები</h2>
+            <div class="faq-container">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq1">რა უნდა ვიქონიო თან ვიზიტისას?</div>
+                    <div class="faq-answer" id="fa1">არაფრის წამოღება არ გჭირდებათ. GN Massage-ის სივრცეში დაგხვდებათ სრულიად სუფთა, ერთჯერადი და ჰიგიენური ყველა საჭირო აქსესუარი.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq2">რამდენი სეანსია საჭირო შედეგის დასანახად?</div>
+                    <div class="faq-answer" id="fa2">მნიშვნელოვან შვებასა და კუნთოვან მოშვებულობას იგრძნობთ პირველივე სეანსიდან. ქრონიკული დაძაბულობისას რეკომენდებულია 5-10 სეანსიანი კურსი.</div>
+                </div>
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question" id="fq3">როგორ ხდება ჩაწერა და გადახდა?</div>
+                    <div class="faq-answer" id="fa3">ჩაწერა ხდება ძალიან მარტივად WhatsApp-ის ღილაკზე დაჭერით. ანგარიშსწორება ხორციელდება ვიზიტის დასრულების შემდეგ ადგილზე.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location -->
         <div class="location-section">
             <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 ლოკაცია & კონტაქტი</h3>
             <div class="contact-info">
@@ -245,21 +280,31 @@
             </div>
 
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQzJzEyLjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQ3JzM0LjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
 
             <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" style="margin-top: 1.8rem;" id="loc-cta">💬 ჩაეწერე ვიზიტზე</a>
         </div>
     </div>
 
+    <!-- Floating Mobile CTA -->
+    <a href="https://wa.me/995557998522" target="_blank" class="floating-cta" id="float-cta">
+        <span>💬 ჩაეწერე ვიზიტზე WhatsApp-ით</span>
+    </a>
+
     <footer>© 2026 GN Massage Tbilisi. ყველა უფლება დაცულია.</footer>
 
     <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+        }
+
         const translations = {
             ka: {
                 back: "← ლოკაციის შეცვლა", navBook: "ჩაწერა",
                 heroTitle: "დაივიწყე ზურგისა და კისრის ტკივილი — შენი სხეული იმსახურებს პროფესიონალურ აღდგენას",
-                heroSub: "ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან. სივრცე თბილისში, სადაც ღრმა რელაქსაცია და სამკურნალო ეფექტი ერთიანდება.",
+                heroSub: "ჯდომითი სამუშაო, სტრესი და კუნთოვანი დაძაბულობა? GN Massage-ის ინდივიდუალურად მორგებული თერაპიული მეთოდოლოგია გეხმარებათ ტკივილის მიზეზის აღმოფხვრაში პირველივე სეანსიდან.",
+                scarcity: "⚡ მიღება ხდება მხოლოდ წინასწარი ჩაწერით (დღეში 4-5 პაციენტი)",
                 heroCta: "💬 ჩაეწერე WhatsApp-ით", servicesTitle: "🌿 <span>სერვისები</span> & თერაპიული პროგრამები",
                 s1Title: "ზურგის თერაპიული & სამკურნალო მასაჟი", s1Desc: "სპეციალიზებული თერაპია ხერხემლის, კისრისა და წელის არეში დაგროვილი ქრონიკული დაძაბულობისა და ტკივილის მოსახსნელად. იდეალურია ჯდომითი სამუშაოსა და სტრესის შედეგად გამოწვეული დისკომფორტის წინააღმდეგ.",
                 s2Title: "სრული სხეულის აღდგენითი & ღრმა ქსოვილების (Deep Tissue) მასაჟი", s2Desc: "კუნთების ღრმა შრეების, იოგებისა და ფასციების ინტენსიური დამუშავება. აუმჯობესებს სისხლის მიმოქცევას, ტონუსში მოჰყავს სხეული და უზრუნველყოფს კუნთების სწრაფ აღდგენას ფიზიკური დატვირთვის შემდეგ.",
@@ -267,13 +312,22 @@
                 s4Title: "დეტოქსიკაციური ლიმფოდრენაჟული მასაჟი", s4Desc: "სპეციალური ტექნიკა ლიმფური სისტემის სტიმულირებისთვის. ეფექტურად დევნის ორგანიზმიდან ტოქსინებსა და ზედმეტ სითხეს, ხსნის შეშუპებას და სხეულს ანიჭებს განსაკუთრებულ სიმსუბუქეს.",
                 s5Title: "სხეულის საკორექციო & მოდელირების თერაპია", s5Desc: "მიზნობრივი მასაჟი პრობლემური ზონების დამუშავების, ქსოვილების ელასტიკურობის ამაღლებისა და კანის სტრუქტურის გაუმჯობესებისთვის. ეხმარება სხეულს მკვრივი და დახვეწილი ფორმების მიღებაში.",
                 tQuote: "„ჩემი მთავარი სერტიფიკატი — თქვენი გათავისუფლებული ზურგი და ღიმილია.“",
-                tBio: "ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილები, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.",
-                duration: "ხანგრძლივობა:", minutes: "წუთი", bookBtn: "ჩაწერა →", locTitle: "📍 ლოკაცია & კონტაქტი", mapText: "Google Maps-ზე ნახვა 🗺️", locCta: "💬 ჩაეწერე ვიზიტზე"
+                tBio: "ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილი, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.",
+                revTitle: "⭐ <span>4.9/5</span> კმაყოფილი პაციენტების შეფასებები",
+                r1Text: "„3 სეანსის შემდეგ კისრისა და ბეჭების ქრონიკული ტკივილი სრულიად გამიქრა. ჯდომითი სამუშაოს გამო ძალიან ვიტანჯებოდი, დიდი მადლობა პროფესიონალიზმისთვის!“", r1Auth: "— მარიამი K., IT სპეციალისტი",
+                r2Text: "„საუკეთესო ღრმა მასაჟი თბილისში. ინტენსიური ვარჯიშის შემდეგ კუნთები ძალიან სწრაფად აღმიდგა. გარემო არის იდეალურად სუფთა და მშვიდი.“", r2Auth: "— გიორგი B.",
+                r3Text: "„ძალიან ყურადღებიანი მიდგომა. პირველივე პროცედურის შემდეგ ვიგრძენი საოცარი სიმსუბუქე. ყველას ვურჩევ!“", r3Auth: "— ელენე M.",
+                faqTitle: "❓ <span>ხშირად</span> დასმული კითხვები",
+                fq1: "რა უნდა ვიქონიო თან ვიზიტისას?", fa1: "არაფრის წამოღება არ გჭირდებათ. GN Massage-ის სივრცეში დაგხვდებათ სრულიად სუფთა, ერთჯერადი და ჰიგიენური ყველა საჭირო აქსესუარი.",
+                fq2: "რამდენი სეანსია საჭირო შედეგის დასანახად?", fa2: "მნიშვნელოვან შვებასა და კუნთოვან მოშვებულობას იგრძნობთ პირველივე სეანსიდან. ქრონიკული დაძაბულობისას რეკომენდებულია 5-10 სეანსიანი კურსი.",
+                fq3: "როგორ ხდება ჩაწერა და გადახდა?", fa3: "ჩაწერა ხდება ძალიან მარტივად WhatsApp-ის ღილაკზე დაჭერით. ანგარიშსწორება ხორციელდება ვიზიტის დასრულების შემდეგ ადგილზე.",
+                duration: "ხანგრძლივობა:", minutes: "წუთი", bookBtn: "ჩაწერა →", locTitle: "📍 ლოკაცია & კონტაქტი", mapText: "Google Maps-ზე ნახვა 🗺️", locCta: "💬 ჩაეწერე ვიზიტზე", floatCta: "💬 ჩაეწერე ვიზიტზე WhatsApp-ით"
             },
             en: {
                 back: "← Change Location", navBook: "Book Now",
                 heroTitle: "Forget Back and Neck Pain — Your Body Deserves Professional Recovery",
-                heroSub: "Sedentary work, stress, and muscle tension? GN Massage's tailored therapeutic approach helps eliminate pain from the very first session. A premium space in Tbilisi where deep relaxation meets healing.",
+                heroSub: "Sedentary work, stress, and muscle tension? GN Massage's tailored therapeutic approach helps eliminate pain from the very first session.",
+                scarcity: "⚡ Admission by prior appointment only (4-5 clients per day)",
                 heroCta: "💬 Book via WhatsApp", servicesTitle: "🌿 <span>Services</span> & Therapeutic Programs",
                 s1Title: "Therapeutic & Healing Back Massage", s1Desc: "Specialized therapy to relieve chronic tension and pain in the spine, neck, and lower back. Ideal against discomfort caused by desk work and stress.",
                 s2Title: "Full Body Recovery & Deep Tissue Massage", s2Desc: "Intense work on deep muscle layers, tendons, and fascia. Improves blood circulation, tones the body, and ensures quick muscle recovery after exertion.",
@@ -281,13 +335,22 @@
                 s4Title: "Detoxifying Lymphatic Drainage Massage", s4Desc: "Specialized technique to stimulate the lymphatic system. Effectively eliminates toxins and excess fluid, reduces swelling, and brings lightness.",
                 s5Title: "Body Sculpting & Modeling Therapy", s5Desc: "Targeted massage to work on problem areas, enhance tissue elasticity, and improve skin structure. Helps achieve firm and refined body shapes.",
                 tQuote: "“My primary certification is your pain-free back and glowing smile.”",
-                tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients who regain their mobility and peace of mind.",
-                duration: "Duration:", minutes: "min", bookBtn: "Book →", locTitle: "📍 Location & Contact", mapText: "View on Google Maps 🗺️", locCta: "💬 Book Your Visit"
+                tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients.",
+                revTitle: "⭐ <span>4.9/5</span> Patient Reviews",
+                r1Text: "“After 3 sessions my chronic neck and shoulder pain was completely gone. Sitting at work was killing me, thank you for your professionalism!”", r1Auth: "— Mariam K., IT Specialist",
+                r2Text: "“Best deep tissue massage in Tbilisi. Recovered super fast after heavy workouts. Environment is super clean and quiet.”", r2Auth: "— Giorgi B.",
+                r3Text: "“Very attentive approach. Felt amazing lightness right after the first session. Highly recommend!”", r3Auth: "— Elene M.",
+                faqTitle: "❓ <span>Frequently</span> Asked Questions",
+                fq1: "What should I bring with me?", fa1: "You don't need to bring anything. All fresh, single-use, and hygienic accessories are provided at GN Massage.",
+                fq2: "How many sessions do I need for results?", fa2: "You will feel significant relief right after the first session. For chronic tension, a course of 5-10 sessions is recommended.",
+                fq3: "How do I book and pay?", fa3: "Booking is effortless by clicking the WhatsApp button. Payment is made on-site after your visit.",
+                duration: "Duration:", minutes: "min", bookBtn: "Book →", locTitle: "📍 Location & Contact", mapText: "View on Google Maps 🗺️", locCta: "💬 Book Your Visit", floatCta: "💬 Book via WhatsApp"
             },
             ru: {
                 back: "← Сменить локацию", navBook: "Записаться",
                 heroTitle: "Забудьте о боли в спине и шее — ваше тело заслуживает профессионального восстановления",
-                heroSub: "Сидячая работа, стресс и мышечное напряжение? Индивидуальный терапевтический подход GN Massage помогает устранить причину боли с первого сеанса. Пространство в Тбилиси, где глубокое расслабление сочетается с лечебным эффектом.",
+                heroSub: "Сидячая работа, стресс и мышечное напряжение? Индивидуальный терапевтический подход GN Massage помогает устранить причину боли с первого сеанса.",
+                scarcity: "⚡ Прием только по предварительной записи (4-5 клиентов в день)",
                 heroCta: "💬 Записаться через WhatsApp", servicesTitle: "🌿 <span>Услуги</span> и терапевтические программы",
                 s1Title: "Терапевтический и лечебный массаж спины", s1Desc: "Специализированная терапия для снятия хронического напряжения и боли в позвоночнике, шее и пояснице. Идеально при сидячей работе и стрессе.",
                 s2Title: "Восстановительный массаж всего тела и Deep Tissue", s2Desc: "Интенсивная проработка глубоких слоев мышц, сухожилий и фасций. Улучшает кровообращение, тонизирует тело и восстанавливает после нагрузок.",
@@ -296,7 +359,15 @@
                 s5Title: "Корректирующая и моделирующая терапия тела", s5Desc: "Целевой массаж проработки проблемных зон, повышения эластичности тканей и улучшения структуры кожи. Помогает обрести подтянутые формы.",
                 tQuote: "«Мой главный сертификат — ваша здоровая спина и улыбка без боли.»",
                 tBio: "Для меня массаж — это не просто техника, а глубокое понимание механики тела, точечная проработка очагов напряжения и индивидуальный подход к восстановлению каждого клиента.<br><br>Мои регалии не измеряются бумагами на стене. Главная награда — сотни довольных, освобожденных от боли и стресса людей.",
-                duration: "Длительность:", minutes: "мин", bookBtn: "Запись →", locTitle: "📍 Локация и контакты", mapText: "Открыть в Google Maps 🗺️", locCta: "💬 Записаться на визит"
+                revTitle: "⭐ <span>4.9/5</span> Отзывы клиентов",
+                r1Text: "«После 3 сеансов хроническая боль в шее и лопатках полностью прошла. Сидячая работа ужасно мучила, спасибо огромное!»", r1Auth: "— Мариам К., IT-специалист",
+                r2Text: "«Лучший Deep Tissue массаж в Тбилиси. Быстро восстановился после тренировок. Чистота и тишина идеальные.»", r2Auth: "— Георгий Б.",
+                r3Text: "«Очень внимательный подход. С первого сеанса почувствовала невероятную легкость. Всем рекомендую!»", r3Auth: "— Елена М.",
+                faqTitle: "❓ <span>Часто</span> задаваемые вопросы",
+                fq1: "Что нужно брать с собой?", fa1: "Брать с собой ничего не нужно. В GN Massage предоставляются все необходимые одноразовые гигиенические принадлежности.",
+                fq2: "Сколько сеансов нужно для результата?", fa2: "Значительное облегчение вы почувствуете с первого сеанса. При хронических болях рекомендуется курс из 5-10 сеансов.",
+                fq3: "Как забронировать и оплатить?", fa3: "Запись очень простая — в один клик через WhatsApp. Оплата производится на месте после сеанса.",
+                duration: "Длительность:", minutes: "мин", bookBtn: "Запись →", locTitle: "📍 Локация и контакты", mapText: "Открыть в Google Maps 🗺️", locCta: "💬 Записаться на визит", floatCta: "💬 Записаться через WhatsApp"
             }
         };
 
@@ -308,6 +379,7 @@
             document.getElementById('nav-book-text').innerText = t.navBook;
             document.getElementById('hero-title').innerText = t.heroTitle;
             document.getElementById('hero-sub').innerText = t.heroSub;
+            document.getElementById('scarcity-text').innerText = t.scarcity;
             document.getElementById('hero-cta').innerText = t.heroCta;
             document.getElementById('services-title').innerHTML = t.servicesTitle;
 
@@ -331,9 +403,20 @@
             document.getElementById('t-quote').innerText = t.tQuote;
             document.getElementById('t-bio').innerHTML = t.tBio;
 
+            document.getElementById('rev-title').innerHTML = t.revTitle;
+            document.getElementById('r1-text').innerText = t.r1Text; document.getElementById('r1-auth').innerText = t.r1Auth;
+            document.getElementById('r2-text').innerText = t.r2Text; document.getElementById('r2-auth').innerText = t.r2Auth;
+            document.getElementById('r3-text').innerText = t.r3Text; document.getElementById('r3-auth').innerText = t.r3Auth;
+
+            document.getElementById('faq-title').innerHTML = t.faqTitle;
+            document.getElementById('fq1').innerText = t.fq1; document.getElementById('fa1').innerText = t.fa1;
+            document.getElementById('fq2').innerText = t.fq2; document.getElementById('fa2').innerText = t.fa2;
+            document.getElementById('fq3').innerText = t.fq3; document.getElementById('fa3').innerText = t.fa3;
+
             document.getElementById('loc-title').innerText = t.locTitle;
             document.getElementById('map-link').innerText = t.mapText;
             document.getElementById('loc-cta').innerText = t.locCta;
+            document.getElementById('float-cta').innerText = t.floatCta;
 
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
