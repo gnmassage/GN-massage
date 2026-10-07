@@ -3,117 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GN Massage - Welcome</title>
+    <title>GN Massage - აირჩიეთ ლოკაცია</title>
+
+    <!-- Google Site Verification -->
+    <meta name="google-site-verification" content="HxhSxaF3IqDjvBY-HGgoXhU91_-UNiypxNWr8BDppMs" />
 
     <!-- Circular Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
     <link rel="alternate icon" type="image/png" href="logo.png">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="GN Massage - პროფესიონალური მასაჟი & სხეულის აღდგენა">
-    <meta property="og:description" content="თბილისი & ბაკურიანი — ინდივიდუალურად მორგებული თერაპიული და სამკურნალო მასაჟი.">
-    <meta property="og:image" content="logo.png">
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="GN Massage - პროფესიონალური მასაჟი">
+    <meta property="og:description" content="თერაპიული, აღდგენითი და სამკურნალო მასაჟი თბილისსა და ბაკურიანში.">
+    <meta property="og:image" content="therapist.jpg">
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
-        body { background-color: #0b0f0c; background-image: radial-gradient(circle at center, #16241a 0%, #0b0f0c 75%); height: 100vh; display: flex; align-items: center; justify-content: center; color: #ffffff; text-align: center; padding: 1.5rem; overflow-y: auto; }
+        body { background-color: #0b0f0c; color: #e0e0e0; display: flex; flex-direction: column; min-height: 100vh; justify-content: space-between; }
         
-        /* Splash Screen */
-        .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #0b0f0c; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 999; animation: fadeOutSplash 0.8s ease 2.5s forwards; cursor: pointer; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 1px solid rgba(212, 175, 55, 0.15); background: rgba(11, 15, 12, 0.95); backdrop-filter: blur(10px); }
+        .brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; color: #ffffff; }
+        .brand-name span { color: #D4AF37; }
         
-        /* ლოგო 2.5-ჯერ დიდი Splash Screen-ზე */
-        .splash-logo-img { 
-            width: 700px; 
-            max-width: 90vw; 
-            height: auto; 
-            opacity: 0; 
-            animation: fadeInLogo 1.2s ease 0.3s forwards; 
-            filter: drop-shadow(0 0 35px rgba(212, 175, 55, 0.55)); 
-        }
-        
-        .splash-sub { font-size: 1.1rem; letter-spacing: 6px; text-transform: uppercase; color: #D4AF37; margin-top: 2rem; opacity: 0; animation: fadeInLogo 1.2s ease 0.8s forwards; font-weight: 600; }
-        
-        @keyframes fadeInLogo { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-        @keyframes fadeOutSplash { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; visibility: hidden; pointer-events: none; } }
-        
-        /* Welcome Card */
-        .welcome-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(212, 175, 55, 0.22); padding: 3.5rem 2.5rem; border-radius: 32px; max-width: 650px; width: 100%; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7); opacity: 0; animation: fadeInMain 1s ease 2.8s forwards; margin: auto; }
-        @keyframes fadeInMain { 0% { opacity: 0; transform: scale(0.95); } 100% { opacity: 1; transform: scale(1); } }
-        
-        /* ლოგო 2.5-ჯერ დიდი მთავარ ბარათში */
-        .main-logo-img { 
-            width: 525px; 
-            max-width: 95%; 
-            height: auto; 
-            margin-bottom: 2rem; 
-            filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5)); 
-            transition: transform 0.4s ease;
-        }
-
-        .main-logo-img:hover {
-            transform: scale(1.03);
-        }
-        
-        .subtitle { font-size: 1.05rem; color: #a0a0a0; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.6; }
-        .buttons-container { display: flex; flex-direction: column; gap: 1.2rem; }
-        .location-btn { display: flex; align-items: center; justify-content: center; padding: 1.2rem 1.5rem; border-radius: 16px; text-decoration: none; font-size: 1.1rem; font-weight: 600; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-        .btn-tbilisi { background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); }
-        .btn-tbilisi:hover { background: linear-gradient(135deg, #255232, #367348); transform: translateY(-3px); box-shadow: 0 10px 25px rgba(44, 94, 59, 0.4); }
-        .btn-bakuriani { background: rgba(212, 175, 55, 0.08); color: #ffffff; border: 1px solid #D4AF37; }
-        .btn-bakuriani:hover { background: #D4AF37; color: #0b0f0c; transform: translateY(-3px); box-shadow: 0 10px 25px rgba(212, 175, 55, 0.35); }
-        .lang-switch { margin-top: 2.2rem; font-size: 0.9rem; color: #666666; letter-spacing: 1px; }
-        .lang-btn { background: none; border: none; color: #777777; font-size: 0.9rem; font-weight: 600; cursor: pointer; padding: 0.2rem 0.5rem; transition: color 0.3s ease; }
-        .lang-btn:hover { color: #ffffff; }
+        .lang-switch { font-size: 0.9rem; color: #666; }
+        .lang-btn { background: none; border: none; color: #777; font-weight: 600; cursor: pointer; padding: 0.2rem 0.5rem; transition: color 0.3s; }
+        .lang-btn:hover { color: #fff; }
         .lang-btn.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
+
+        .main-container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
+        .logo-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid #D4AF37; margin: 0 auto 1.5rem; object-fit: cover; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); }
         
-        /* Mobile Responsive adjustment */
-        @media (max-width: 600px) { 
-            .welcome-card { padding: 2.5rem 1.5rem; } 
-            .splash-logo-img { width: 450px; } 
-            .main-logo-img { width: 350px; margin-bottom: 1.5rem; } 
-            .subtitle { font-size: 0.95rem; margin-bottom: 2rem; }
+        h1 { font-size: 2.2rem; color: #ffffff; margin-bottom: 0.8rem; font-weight: 700; }
+        p.subtitle { color: #a0a0a0; font-size: 1.05rem; margin-bottom: 2.5rem; font-weight: 300; }
+
+        .location-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1rem; }
+        .location-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; padding: 2.5rem 1.8rem; text-decoration: none; color: inherit; transition: all 0.35s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(10px); }
+        .location-card:hover { transform: translateY(-5px); border-color: #D4AF37; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.12); background: rgba(255, 255, 255, 0.04); }
+        
+        .card-title { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+        .card-desc { font-size: 0.95rem; color: #a0a0a0; font-weight: 300; line-height: 1.5; margin-bottom: 1.5rem; }
+        .card-btn { display: inline-block; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(212, 175, 55, 0.3); transition: all 0.3s; }
+        .location-card:hover .card-btn { background: linear-gradient(135deg, #255232, #367348); border-color: #D4AF37; }
+
+        footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.7rem; }
+            header { padding: 1rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Splash Screen -->
-    <div class="splash-screen">
-        <img src="logo.png" alt="GN Massage" class="splash-logo-img">
-        <div class="splash-sub">Therapy & Wellness</div>
-    </div>
-
-    <!-- Main Welcome Card -->
-    <div class="welcome-card">
-        <img src="logo.png" alt="GN Massage" class="main-logo-img">
-        <p class="subtitle" id="sub-text">პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:</p>
-
-        <div class="buttons-container">
-            <a href="tbilisi.html" class="location-btn btn-tbilisi" id="btn-tbilisi-text">📍 მასაჟი თბილისში</a>
-            <a href="bakuriani.html" class="location-btn btn-bakuriani" id="btn-bakuriani-text">❄️ მასაჟი ბაკურიანში</a>
-        </div>
-
+    <header>
+        <div class="brand-name">GN <span>MASSAGE</span></div>
         <div class="lang-switch">
             <button class="lang-btn active" onclick="setLanguage('ka')">GE</button> | 
             <button class="lang-btn" onclick="setLanguage('en')">EN</button> | 
             <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
         </div>
+    </header>
+
+    <div class="main-container">
+        <img src="logo.png" alt="GN Massage Logo" class="logo-img">
+        <h1 id="title">აირჩიეთ სასურველი ლოკაცია</h1>
+        <p class="subtitle" id="subtitle">პროფესიონალური მასაჟი & აღდგენითი თერაპია</p>
+
+        <div class="location-cards">
+            <a href="tbilisi.html" class="location-card">
+                <div>
+                    <div class="card-title">🏙️ <span id="tb-title">თბილისი</span></div>
+                    <div class="card-desc" id="tb-desc">სამკურნალო, თერაპიული და გამაჯანსაღებელი მასაჟი დედაქალაქში.</div>
+                </div>
+                <div>
+                    <span class="card-btn" id="tb-btn">გადასვლა →</span>
+                </div>
+            </a>
+
+            <a href="bakuriani.html" class="location-card">
+                <div>
+                    <div class="card-title">❄️ <span id="bk-title">ბაკურიანი</span></div>
+                    <div class="card-desc" id="bk-desc">აღდგენითი თერაპია სრიალის შემდეგ & რელაქსაცია მთის კურორტზე.</div>
+                </div>
+                <div>
+                    <span class="card-btn" id="bk-btn">გადასვლა →</span>
+                </div>
+            </a>
+        </div>
     </div>
+
+    <footer>© 2026 GN Massage. ყველა უფლება დაცულია.</footer>
 
     <script>
         const translations = {
-            ka: { subtitle: "პროფესიონალური მასაჟი & სხეულის აღდგენა<br>აირჩიეთ სასურველი ლოკაცია:", btnTbilisi: "📍 მასაჟი თბილისში", btnBakuriani: "❄️ მასაჟი ბაკურიანში" },
-            en: { subtitle: "Professional Massage & Body Recovery<br>Please select location:", btnTbilisi: "📍 Massage in Tbilisi", btnBakuriani: "❄️ Massage in Bakuriani" },
-            ru: { subtitle: "Профессиональный массаж и восстановление<br>Выберите локацию:", btnTbilisi: "📍 Массаж в Тбилиси", btnBakuriani: "❄️ Массаж в Бакуриани" }
+            ka: {
+                title: "აირჩიეთ სასურველი ლოკაცია",
+                subtitle: "პროფესიონალური მასაჟი & აღდგენითი თერაპია",
+                tbTitle: "თბილისი",
+                tbDesc: "სამკურნალო, თერაპიული და გამაჯანსაღებელი მასაჟი დედაქალაქში.",
+                tbBtn: "გადასვლა →",
+                bkTitle: "ბაკურიანი",
+                bkDesc: "აღდგენითი თერაპია სრიალის შემდეგ & რელაქსაცია მთის კურორტზე.",
+                bkBtn: "გადასვლა →"
+            },
+            en: {
+                title: "Select Your Preferred Location",
+                subtitle: "Professional Massage & Recovery Therapy",
+                tbTitle: "Tbilisi",
+                tbDesc: "Therapeutic, healing, and wellness massage in the capital.",
+                tbBtn: "Proceed →",
+                bkTitle: "Bakuriani",
+                bkDesc: "Post-skiing recovery therapy & relaxation in the mountain resort.",
+                bkBtn: "Proceed →"
+            },
+            ru: {
+                title: "Выберите желаемую локацию",
+                subtitle: "Профессиональный массаж и восстановительная терапия",
+                tbTitle: "Тбилиси",
+                tbDesc: "Лечебный, терапевтический и оздоровительный массаж в столице.",
+                tbBtn: "Перейти →",
+                bkTitle: "Бакуриани",
+                bkDesc: "Восстановительная терапия после катания и релаксация в горах.",
+                bkBtn: "Перейти →"
+            }
         };
 
         function setLanguage(lang) {
             localStorage.setItem('gn_massage_lang', lang);
-            document.getElementById('sub-text').innerHTML = translations[lang].subtitle;
-            document.getElementById('btn-tbilisi-text').innerHTML = translations[lang].btnTbilisi;
-            document.getElementById('btn-bakuriani-text').innerHTML = translations[lang].btnBakuriani;
+            const t = translations[lang] || translations['ka'];
+
+            document.getElementById('title').innerText = t.title;
+            document.getElementById('subtitle').innerText = t.subtitle;
+            document.getElementById('tb-title').innerText = t.tbTitle;
+            document.getElementById('tb-desc').innerText = t.tbDesc;
+            document.getElementById('tb-btn').innerText = t.tbBtn;
+            document.getElementById('bk-title').innerText = t.bkTitle;
+            document.getElementById('bk-desc').innerText = t.bkDesc;
+            document.getElementById('bk-btn').innerText = t.bkBtn;
 
             const buttons = document.querySelectorAll('.lang-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
