@@ -54,19 +54,23 @@
             opacity: 0;
             visibility: hidden;
         }
+
+        /* Larger & Cleaner Logo Display for Mobile & Desktop */
         .splash-logo {
-            width: 140px;
-            height: 140px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             border: 3px solid #D4AF37;
-            padding: 5px;
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            padding: 2px;
+            object-fit: cover;
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.5);
             animation: pulseLogo 2s infinite ease-in-out;
         }
+
         @keyframes pulseLogo {
-            0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
-            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
-            100% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            0% { transform: scale(0.96); box-shadow: 0 0 25px rgba(212, 175, 55, 0.35); }
+            50% { transform: scale(1.04); box-shadow: 0 0 45px rgba(212, 175, 55, 0.7); }
+            100% { transform: scale(0.96); box-shadow: 0 0 25px rgba(212, 175, 55, 0.35); }
         }
 
         /* Main Content Visuals */
@@ -90,8 +94,8 @@
         }
 
         .brand-logo {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 2px solid #D4AF37;
             margin-bottom: 1.5rem;
@@ -156,6 +160,17 @@
             font-size: 0.85rem;
             color: #555;
             width: 100%;
+        }
+
+        /* Responsive Mobile Styles */
+        @media (max-width: 480px) {
+            .splash-logo {
+                width: 200px;
+                height: 200px;
+            }
+            .brand-title {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
