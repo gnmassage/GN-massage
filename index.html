@@ -3,155 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GN Massage - აირჩიეთ ლოკაცია</title>
+    <title>GN Massage - აირჩიეთ ლოკაცია / Choose Location</title>
+    
+    <!-- SEO & Metadata -->
+    <meta name="description" content="GN Massage - პროფესიონალური თერაპიული, სამკურნალო და აღდგენითი მასაჟი თბილისსა (საბურთალო) და ბაკურიანში.">
+    <meta name="keywords" content="GN Massage, მასაჟი თბილისში, მასაჟი საბურთალოზე, მასაჟი ბაკურიანში, სამკურნალო მასაჟი">
 
-    <!-- Google Site Verification -->
-    <meta name="google-site-verification" content="HxhSxaF3IqDjvBY-HGgoXhU91_-UNiypxNWr8BDppMs" />
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "GN Massage",
+      "image": "https://gn-massage.vercel.app/logo.png",
+      "url": "https://gn-massage.vercel.app/",
+      "telephone": "+995557998522",
+      "priceRange": "75 GEL - 110 GEL",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "GE"
+      }
+    }
+    </script>
 
     <!-- Circular Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
     <link rel="alternate icon" type="image/png" href="logo.png">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="GN Massage - პროფესიონალური მასაჟი">
-    <meta property="og:description" content="თერაპიული, აღდგენითი და სამკურნალო მასაჟი თბილისსა და ბაკურიანში.">
-    <meta property="og:image" content="therapist.jpg">
-
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
-        body { background-color: #0b0f0c; color: #e0e0e0; display: flex; flex-direction: column; min-height: 100vh; justify-content: space-between; }
-        
-        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 2rem; border-bottom: 1px solid rgba(212, 175, 55, 0.15); background: rgba(11, 15, 12, 0.95); backdrop-filter: blur(10px); }
-        .brand-name { font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; color: #ffffff; }
-        .brand-name span { color: #D4AF37; }
-        
-        .lang-switch { font-size: 0.9rem; color: #666; }
-        .lang-btn { background: none; border: none; color: #777; font-weight: 600; cursor: pointer; padding: 0.2rem 0.5rem; transition: color 0.3s; }
-        .lang-btn:hover { color: #fff; }
-        .lang-btn.active { color: #D4AF37; border-bottom: 2px solid #D4AF37; }
+        body { background-color: #0b0f0c; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; overflow-x: hidden; }
 
-        .main-container { max-width: 900px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-        .logo-img { width: 110px; height: 110px; border-radius: 50%; border: 2px solid #D4AF37; margin: 0 auto 1.5rem; object-fit: cover; box-shadow: 0 0 25px rgba(212, 175, 55, 0.2); }
-        
-        h1 { font-size: 2.2rem; color: #ffffff; margin-bottom: 0.8rem; font-weight: 700; }
-        p.subtitle { color: #a0a0a0; font-size: 1.05rem; margin-bottom: 2.5rem; font-weight: 300; }
+        /* 3-Second Splash Screen */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0b0f0c;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        #splash-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .splash-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 3px solid #D4AF37;
+            padding: 5px;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+            animation: pulseLogo 2s infinite ease-in-out;
+        }
+        @keyframes pulseLogo {
+            0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { transform: scale(1.05); box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+            100% { transform: scale(0.95); box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        }
 
-        .location-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.8rem; margin-top: 1rem; }
-        .location-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 24px; padding: 2.5rem 1.8rem; text-decoration: none; color: inherit; transition: all 0.35s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(10px); }
-        .location-card:hover { transform: translateY(-5px); border-color: #D4AF37; box-shadow: 0 15px 35px rgba(212, 175, 55, 0.12); background: rgba(255, 255, 255, 0.04); }
-        
-        .card-title { font-size: 1.5rem; font-weight: 700; color: #ffffff; margin-bottom: 0.8rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
-        .card-desc { font-size: 0.95rem; color: #a0a0a0; font-weight: 300; line-height: 1.5; margin-bottom: 1.5rem; }
-        .card-btn { display: inline-block; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 0.8rem 1.5rem; border-radius: 12px; font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(212, 175, 55, 0.3); transition: all 0.3s; }
-        .location-card:hover .card-btn { background: linear-gradient(135deg, #255232, #367348); border-color: #D4AF37; }
+        /* Main Content Visuals */
+        .main-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            max-width: 600px;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 3s; /* Appears right after splash */
+        }
 
-        footer { text-align: center; padding: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.7rem; }
-            header { padding: 1rem; }
+        .brand-logo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 2px solid #D4AF37;
+            margin-bottom: 1.5rem;
+            object-fit: cover;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+        .brand-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+        .brand-title span { color: #D4AF37; }
+
+        .brand-subtitle {
+            font-size: 1rem;
+            color: #a0a0a0;
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        /* Premium Buttons Style */
+        .location-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+        }
+
+        .loc-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(212, 175, 55, 0.05));
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 1.2rem 1.8rem;
+            text-decoration: none;
+            color: #ffffff;
+            transition: all 0.35s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .loc-btn:hover {
+            border-color: #D4AF37;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(30, 64, 39, 0.3));
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .loc-info { text-align: left; }
+        .loc-title { font-size: 1.2rem; font-weight: 600; color: #ffffff; }
+        .loc-sub { font-size: 0.85rem; color: #D4AF37; margin-top: 0.2rem; }
+        .loc-arrow { font-size: 1.4rem; color: #D4AF37; transition: transform 0.3s; }
+        .loc-btn:hover .loc-arrow { transform: translateX(5px); }
+
+        footer {
+            padding: 1.5rem;
+            font-size: 0.85rem;
+            color: #555;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="brand-name">GN <span>MASSAGE</span></div>
-        <div class="lang-switch">
-            <button class="lang-btn active" onclick="setLanguage('ka')">GE</button> | 
-            <button class="lang-btn" onclick="setLanguage('en')">EN</button> | 
-            <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
-        </div>
-    </header>
+    <!-- 3-Second Splash Screen -->
+    <div id="splash-screen">
+        <img src="logo.png" alt="GN Massage Logo" class="splash-logo">
+    </div>
 
+    <!-- Main Content -->
     <div class="main-container">
-        <img src="logo.png" alt="GN Massage Logo" class="logo-img">
-        <h1 id="title">აირჩიეთ სასურველი ლოკაცია</h1>
-        <p class="subtitle" id="subtitle">პროფესიონალური მასაჟი & აღდგენითი თერაპია</p>
+        <img src="logo.png" alt="GN Massage Logo" class="brand-logo">
+        <h1 class="brand-title">GN <span>MASSAGE</span></h1>
+        <p class="brand-subtitle">აირჩიეთ სასურველი ლოკაცია / Select Location</p>
 
-        <div class="location-cards">
-            <a href="tbilisi.html" class="location-card">
-                <div>
-                    <div class="card-title">🏙️ <span id="tb-title">თბილისი</span></div>
-                    <div class="card-desc" id="tb-desc">სამკურნალო, თერაპიული და გამაჯანსაღებელი მასაჟი დედაქალაქში.</div>
+        <div class="location-buttons">
+            <!-- Tbilisi Button -->
+            <a href="tbilisi.html" class="loc-btn">
+                <div class="loc-info">
+                    <div class="loc-title">📍 თბილისი / Tbilisi</div>
+                    <div class="loc-sub">საბურთალო • Saburtalo Cabinet</div>
                 </div>
-                <div>
-                    <span class="card-btn" id="tb-btn">გადასვლა →</span>
-                </div>
+                <div class="loc-arrow">→</div>
             </a>
 
-            <a href="bakuriani.html" class="location-card">
-                <div>
-                    <div class="card-title">❄️ <span id="bk-title">ბაკურიანი</span></div>
-                    <div class="card-desc" id="bk-desc">აღდგენითი თერაპია სრიალის შემდეგ & რელაქსაცია მთის კურორტზე.</div>
+            <!-- Bakuriani Button -->
+            <a href="bakuriani.html" class="loc-btn">
+                <div class="loc-info">
+                    <div class="loc-title">🏔️ ბაკურიანი / Bakuriani</div>
+                    <div class="loc-sub">სეზონური ლოკაცია • Seasonal Location</div>
                 </div>
-                <div>
-                    <span class="card-btn" id="bk-btn">გადასვლა →</span>
-                </div>
+                <div class="loc-arrow">→</div>
             </a>
         </div>
     </div>
 
-    <footer>© 2026 GN Massage. ყველა უფლება დაცულია.</footer>
+    <footer>© 2026 GN Massage. All rights reserved.</footer>
 
     <script>
-        const translations = {
-            ka: {
-                title: "აირჩიეთ სასურველი ლოკაცია",
-                subtitle: "პროფესიონალური მასაჟი & აღდგენითი თერაპია",
-                tbTitle: "თბილისი",
-                tbDesc: "სამკურნალო, თერაპიული და გამაჯანსაღებელი მასაჟი დედაქალაქში.",
-                tbBtn: "გადასვლა →",
-                bkTitle: "ბაკურიანი",
-                bkDesc: "აღდგენითი თერაპია სრიალის შემდეგ & რელაქსაცია მთის კურორტზე.",
-                bkBtn: "გადასვლა →"
-            },
-            en: {
-                title: "Select Your Preferred Location",
-                subtitle: "Professional Massage & Recovery Therapy",
-                tbTitle: "Tbilisi",
-                tbDesc: "Therapeutic, healing, and wellness massage in the capital.",
-                tbBtn: "Proceed →",
-                bkTitle: "Bakuriani",
-                bkDesc: "Post-skiing recovery therapy & relaxation in the mountain resort.",
-                bkBtn: "Proceed →"
-            },
-            ru: {
-                title: "Выберите желаемую локацию",
-                subtitle: "Профессиональный массаж и восстановительная терапия",
-                tbTitle: "Тбилиси",
-                tbDesc: "Лечебный, терапевтический и оздоровительный массаж в столице.",
-                tbBtn: "Перейти →",
-                bkTitle: "Бакуриани",
-                bkDesc: "Восстановительная терапия после катания и релаксация в горах.",
-                bkBtn: "Перейти →"
-            }
-        };
-
-        function setLanguage(lang) {
-            localStorage.setItem('gn_massage_lang', lang);
-            const t = translations[lang] || translations['ka'];
-
-            document.getElementById('title').innerText = t.title;
-            document.getElementById('subtitle').innerText = t.subtitle;
-            document.getElementById('tb-title').innerText = t.tbTitle;
-            document.getElementById('tb-desc').innerText = t.tbDesc;
-            document.getElementById('tb-btn').innerText = t.tbBtn;
-            document.getElementById('bk-title').innerText = t.bkTitle;
-            document.getElementById('bk-desc').innerText = t.bkDesc;
-            document.getElementById('bk-btn').innerText = t.bkBtn;
-
-            const buttons = document.querySelectorAll('.lang-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            if (lang === 'ka') buttons[0].classList.add('active');
-            if (lang === 'en') buttons[1].classList.add('active');
-            if (lang === 'ru') buttons[2].classList.add('active');
-        }
-
+        // Automatic 3-Second Splash Screen Disappear
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('gn_massage_lang') || 'ka';
-            setLanguage(savedLang);
+            setTimeout(() => {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.classList.add('fade-out');
+                }
+            }, 3000); // 3000ms = 3 seconds
         });
     </script>
 </body>
