@@ -149,6 +149,12 @@
         .seo-info-section p { color: #a0a0a0; font-size: 0.95rem; font-weight: 300; line-height: 1.7; margin-bottom: 1rem; }
         .seo-info-section p:last-child { margin-bottom: 0; }
 
+        /* Instagram Reels Section Grid */
+        .reels-section { margin-top: 4rem; }
+        .reels-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .reel-card { background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; overflow: hidden; display: flex; justify-content: center; backdrop-filter: blur(10px); }
+        .reel-card blockquote { margin: 0 !important; width: 100% !important; border-radius: 18px; }
+
         /* Therapist Section */
         .therapist-section {
             margin-top: 4rem;
@@ -335,6 +341,29 @@
             <p id="seo-info-p2">თითოეული პროცედურა ფორმირდება პაციენტის ანატომიური საჭიროებების მიხედვით, რაც უზრუნველყოფს ხანგრძლივ შედეგს, სხეულის სიმსუბუქესა და ენერგიის სრულ აღდგენას.</p>
         </div>
 
+        <!-- 🎬 Instagram Reels Section -->
+        <div class="reels-section">
+            <h2 class="section-title" id="reels-title">🎥 <span>ვიდეო</span> მიმოხილვა & პროცესი</h2>
+            <div class="reels-grid">
+                
+                <!-- Reel 1 -->
+                <div class="reel-card">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Ddj6Wu1RwkN/" data-instgrm-version="14"></blockquote>
+                </div>
+
+                <!-- Reel 2 -->
+                <div class="reel-card">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DW4OmNjiMjb/" data-instgrm-version="14"></blockquote>
+                </div>
+
+                <!-- Reel 3 -->
+                <div class="reel-card">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DezSH8fIlZP/" data-instgrm-version="14"></blockquote>
+                </div>
+
+            </div>
+        </div>
+
         <!-- Therapist Section -->
         <div class="therapist-section">
             <div class="therapist-img-container">
@@ -403,6 +432,9 @@
 
     <footer>© 2026 GN Massage Tbilisi. ყველა უფლება დაცულია.</footer>
 
+    <!-- Instagram Embed Script -->
+    <script async src="//www.instagram.com/embed.js"></script>
+
     <script>
         function toggleFaq(element) {
             element.classList.toggle('active');
@@ -430,6 +462,7 @@
                 seoTitle: "რატომ <span>GN Massage</span> საბურთალოზე?",
                 seoP1: "თუ ეძებთ პროფესიონალურ სამკურნალო ან სარელაქსაციო მასაჟს საბურთალოზე, GN Massage Tbilisi გთავაზობთ მაღალი ხარისხის ინდივიდუალურ თერაპიას. ჩვენი მიზანია დაგეხმაროთ ხერხემლის, კისრისა და წელის არეში არსებული დაძაბულობისა და ქრონიკული ტკივილის ეფექტურად მოხსნაში.",
                 seoP2: "თითოეული პროცედურა ფორმირდება პაციენტის ანატომიური საჭიროებების მიხედვით, რაც უზრუნველყოფს ხანგრძლივ შედეგს, სხეულის სიმსუბუქესა და ენერგიის სრულ აღდგენას.",
+                reelsTitle: "🎥 <span>ვიდეო</span> მიმოხილვა & პროცესი",
                 tQuote: "„ჩემი მთავარი სერტიფიკატი — თქვენი გათავისუფლებული ზურგი და ღიმილია.“",
                 tBio: "ჩემთვის მასაჟი მხოლოდ ტექნიკური მოძრაობები არ არის — ეს არის სხეულის სიღრმისეული გაგება, ტკივილის კერის მიზნობრივი დამუშავება და თითოეულ პაციენტზე ინდივიდუალურად მორგებული აღდგენითი თერაპია.<br><br>ჩემი რეგალიები არ იზომება კედელზე ჩამოკიდებული ქაღალდებით. ჩემი მთავარი ჯილდო ასობით კმაყოფილი, სტრესისგან და ქრონიკული ტკივილისგან გათავისუფლებული ადამიანია.",
                 faqTitle: "❓ <span>ხშირად</span> დასმული კითხვები",
@@ -459,6 +492,7 @@
                 seoTitle: "Why Choose <span>GN Massage</span> in Saburtalo?",
                 seoP1: "If you are looking for professional medical or relaxing massage in Saburtalo, Tbilisi, GN Massage offers top-quality personalized care. We specialize in relieving neck, spine, and lower back tension.",
                 seoP2: "Every session is tailored to your individual anatomical needs to ensure long-lasting relief, bodily lightness, and full energy recovery.",
+                reelsTitle: "🎥 <span>Video</span> Showcase & Process",
                 tQuote: "“My primary certification is your pain-free back and glowing smile.”",
                 tBio: "To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients.",
                 faqTitle: "❓ <span>Frequently</span> Asked Questions",
@@ -488,6 +522,7 @@
                 seoTitle: "Почему <span>GN Massage</span> на Сабуртало?",
                 seoP1: "Если вы ищете профессиональный лечебный или расслабляющий массаж на Сабуртало, GN Massage Tbilisi предлагает высококачественную индивидуальную терапию. Наша цель — эффективно снять напряжение и боль в области позвоночника, шеи и поясницы.",
                 seoP2: "Каждая процедура подбирается с учетом анатомических особенностей клиента, что обеспечивает долговременный результат, легкость в теле и полное восстановление энергии.",
+                reelsTitle: "🎥 <span>Видео</span> Обзор и Процесс",
                 tQuote: "«Мой главный сертификат — ваша здоровая спина и улыбка без боли.»",
                 tBio: "Для меня массаж — это не просто техника, а глубокое понимание механики тела, точечная проработка очагов напряжения и индивидуальный подход к восстановлению каждого клиента.<br><br>Мои регалии не измеряются бумагами на стене. Главная награда — сотни довольных, освобожденных от боли и стресса людей.",
                 faqTitle: "❓ <span>Часто</span> задаваемые вопросы",
@@ -533,6 +568,10 @@
             document.getElementById('seo-info-title').innerHTML = t.seoTitle;
             document.getElementById('seo-info-p1').innerText = t.seoP1;
             document.getElementById('seo-info-p2').innerText = t.seoP2;
+
+            if (document.getElementById('reels-title')) {
+                document.getElementById('reels-title').innerHTML = t.reelsTitle;
+            }
 
             for(let i=1; i<=5; i++) {
                 document.getElementById(`dur-text-${i}`).innerText = t.duration;
