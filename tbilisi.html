@@ -182,6 +182,13 @@
         .contact-info { display: flex; flex-direction: column; gap: 0.8rem; margin: 1.5rem 0 2rem; font-size: 1.1rem; }
         .contact-link { color: #D4AF37; text-decoration: none; font-weight: 600; transition: opacity 0.3s; }
         .contact-link:hover { opacity: 0.8; }
+        
+        /* Location Photos Grid */
+        .location-photos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; margin: 2rem 0; }
+        .location-photo-card { border-radius: 16px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); }
+        .location-photo-card img { width: 100%; height: 220px; object-fit: cover; display: block; transition: transform 0.3s ease; }
+        .location-photo-card img:hover { transform: scale(1.03); }
+
         .map-container { margin-top: 1.5rem; border-radius: 16px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); }
 
         /* Mobile Floating CTA Button */
@@ -369,6 +376,16 @@
                 <div>📞 ტელეფონი: <a href="tel:+995557998522" class="contact-link">+995 557 99 85 22</a></div>
                 <div>💬 WhatsApp: <a href="https://wa.me/995557998522" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
                 <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
+            </div>
+
+            <!-- 📸 Cabinet & View Photos -->
+            <div class="location-photos-grid">
+                <div class="location-photo-card">
+                    <img src="cabinet.jpg" alt="GN Massage Cabinet Saburtalo">
+                </div>
+                <div class="location-photo-card">
+                    <img src="view.jpg" alt="GN Massage Cabinet View Saburtalo">
+                </div>
             </div>
 
             <div class="map-container">
