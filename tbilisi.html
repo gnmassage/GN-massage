@@ -104,12 +104,12 @@
         .scarcity-badge { display: inline-block; background: rgba(212, 175, 55, 0.08); border: 1px solid #D4AF37; color: #D4AF37; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.8rem; letter-spacing: 0.5px; }
         .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
         
-        .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.35s; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.3s; }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(44, 94, 59, 0.5); background: linear-gradient(135deg, #255232, #367348); }
         .cta-btn-alt { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); box-shadow: none; }
         .cta-btn-alt:hover { background: rgba(255, 255, 255, 0.12); }
         
-        /* Value Badges / Guarantees Section */
+        /* Guarantee Badges */
         .value-badges { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 850px; margin: 0 auto; }
         .badge-item { background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 16px; padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.7rem; font-size: 0.88rem; color: #e0e0e0; font-weight: 500; }
         .badge-icon { font-size: 1.2rem; }
@@ -206,6 +206,88 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
+        /* 🌐 LANGUAGE SELECTION POP-UP MODAL STYLES */
+        .lang-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .lang-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .lang-modal-box {
+            background: #111713;
+            border: 1px solid #D4AF37;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            width: 90%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(212, 175, 55, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .lang-modal-overlay.active .lang-modal-box {
+            transform: translateY(0);
+        }
+
+        .lang-modal-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .lang-modal-subtitle {
+            color: #D4AF37;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .lang-options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .lang-opt-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 16px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .lang-opt-btn:hover {
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(44, 94, 59, 0.4);
+        }
+
         footer { text-align: center; padding: 3rem 1.5rem 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
         
         @media (max-width: 768px) { 
@@ -220,6 +302,29 @@
     </style>
 </head>
 <body>
+
+    <!-- 🌐 POP-UP LANGUAGE MODAL -->
+    <div class="lang-modal-overlay" id="langModal">
+        <div class="lang-modal-box">
+            <div class="lang-modal-title">Select Language</div>
+            <div class="lang-modal-subtitle">აირჩიეთ ენა / Выберите язык</div>
+            
+            <div class="lang-options-grid">
+                <button class="lang-opt-btn" onclick="selectModalLanguage('en')">
+                    <span>🇬🇧 English</span>
+                    <span style="color: #D4AF37;">→</span>
+                </button>
+                <button class="lang-opt-btn" onclick="selectModalLanguage('ka')">
+                    <span>🇬🇪 ქართული</span>
+                    <span style="color: #D4AF37;">→</span>
+                </button>
+                <button class="lang-opt-btn" onclick="selectModalLanguage('ru')">
+                    <span>🇷🇺 Русский</span>
+                    <span style="color: #D4AF37;">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <header>
         <div class="header-left">
@@ -245,7 +350,7 @@
             <a href="https://www.instagram.com/g.n.massage" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
         </div>
 
-        <!-- Value / Guarantee Badges -->
+        <!-- Guarantee Badges -->
         <div class="value-badges">
             <div class="badge-item">
                 <span class="badge-icon">🛡️</span>
@@ -334,7 +439,7 @@
             </div>
         </div>
 
-        <!-- SEO Content Block for AI & Search Engines -->
+        <!-- SEO Content Block -->
         <div class="seo-info-section">
             <h2 id="seo-info-title">Why Choose <span>GN Massage</span> in Saburtalo?</h2>
             <p id="seo-info-p1">If you are looking for professional medical or relaxing massage in Saburtalo, Tbilisi, GN Massage offers top-quality personalized care. We specialize in relieving neck, spine, and lower back tension.</p>
@@ -345,22 +450,15 @@
         <div class="reels-section">
             <h2 class="section-title" id="reels-title">🎥 <span>Video</span> Showcase & Process</h2>
             <div class="reels-grid">
-                
-                <!-- Reel 1 -->
                 <div class="reel-card">
                     <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Ddj6Wu1RwkN/" data-instgrm-version="14"></blockquote>
                 </div>
-
-                <!-- Reel 2 -->
                 <div class="reel-card">
                     <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DW4OmNjiMjb/" data-instgrm-version="14"></blockquote>
                 </div>
-
-                <!-- Reel 3 -->
                 <div class="reel-card">
                     <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DezSH8fIlZP/" data-instgrm-version="14"></blockquote>
                 </div>
-
             </div>
         </div>
 
@@ -407,7 +505,6 @@
                 <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
             </div>
 
-            <!-- 📸 Cabinet & View Photos -->
             <div class="location-photos-grid">
                 <div class="location-photo-card">
                     <img src="cabinet.jpg" alt="GN Massage Cabinet Saburtalo">
@@ -432,7 +529,6 @@
 
     <footer>© 2026 GN Massage Tbilisi. All rights reserved.</footer>
 
-    <!-- Instagram Embed Script -->
     <script async src="//www.instagram.com/embed.js"></script>
 
     <script>
@@ -599,9 +695,22 @@
             if (lang === 'ru') buttons[2].classList.add('active');
         }
 
+        // Pop-up Modal-დან ენის არჩევის ფუნქცია
+        function selectModalLanguage(lang) {
+            setLanguage(lang);
+            document.getElementById('langModal').classList.remove('active');
+        }
+
         window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('gn_massage_lang') || 'en';
-            setLanguage(savedLang);
+            const savedLang = localStorage.getItem('gn_massage_lang');
+            
+            // თუ მომხმარებელს ჯერ ენა არ აურჩევია, ამოვუგდოთ Pop-up ფანჯარა
+            if (!savedLang) {
+                document.getElementById('langModal').classList.add('active');
+                setLanguage('en'); // საწყისად დგება ინგლისური
+            } else {
+                setLanguage(savedLang);
+            }
         });
     </script>
 </body>
