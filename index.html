@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ka">
 <head>
-    <!-- Google tag (gtag.js) - Google Analytics 4 -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-76OXSHWYMP"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -11,33 +11,19 @@
       gtag('config', 'G-76OXSHWYMP');
     </script>
 
+    <!-- Google Ads Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18537796448"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-18537796448');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GN Massage - აირჩიეთ ლოკაცია / Choose Location</title>
-    
-    <!-- SEO & Metadata -->
-    <meta name="description" content="GN Massage - პროფესიონალური თერაპიული, სამკურნალო და აღდგენითი მასაჟი თბილისსა (საბურთალო) და ბაკურიანში.">
-    <meta name="keywords" content="GN Massage, მასაჟი თბილისში, მასაჟი საბურთალოზე, მასაჟი ბაკურიანში, სამკურნალო მასაჟი">
-
-    <!-- Canonical Tag -->
-    <link rel="canonical" href="https://gn-massage.vercel.app/">
-
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "HealthAndBeautyBusiness",
-      "name": "GN Massage",
-      "image": "https://gn-massage.vercel.app/logo.png",
-      "url": "https://gn-massage.vercel.app/",
-      "telephone": "+995557998522",
-      "priceRange": "75 GEL - 110 GEL",
-      "address": {
-        "@type": "PostalAddress",
-        "addressCountry": "GE"
-      }
-    }
-    </script>
+    <title>GN Massage - აირჩიეთ ლოკაცია / Select Location</title>
 
     <!-- Circular Favicon Integration -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%230b0f0c' stroke='%23D4AF37' stroke-width='3'/><image href='logo.png' x='15' y='15' width='70' height='70'/></svg>">
@@ -46,203 +32,125 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
-        body { background-color: #0b0f0c; color: #e0e0e0; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center; overflow-x: hidden; }
-
-        /* 1.5-Second Splash Screen */
-        #splash-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: #0b0f0c;
+        body {
+            background-color: #0b0f0c;
+            color: #e0e0e0;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            z-index: 9999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-        #splash-screen.fade-out {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        /* Full Screen Cover Glowing Logo Effect */
-        .splash-logo {
-            width: 380px;
-            max-width: 88vw;
-            height: auto;
-            max-height: 70vh;
-            object-fit: contain;
-            border: none;
-            border-radius: 0;
-            padding: 0;
-            animation: pulseGlowLogo 1.5s infinite ease-in-out;
-        }
-
-        @keyframes pulseGlowLogo {
-            0% {
-                transform: scale(0.96);
-                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.45));
-            }
-            50% {
-                transform: scale(1.05);
-                filter: drop-shadow(0 0 55px rgba(212, 175, 55, 0.95));
-            }
-            100% {
-                transform: scale(0.96);
-                filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.45));
-            }
-        }
-
-        /* Main Content Visuals */
-        .main-container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
             justify-content: center;
-            align-items: center;
-            padding: 2rem 1.5rem;
-            max-width: 600px;
+            background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%);
+            padding: 1.5rem;
+        }
+
+        .portal-card {
+            background: rgba(17, 23, 19, 0.95);
+            border: 1px solid #D4AF37;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
             width: 100%;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 0.8s ease forwards;
-            animation-delay: 1.5s; /* Appears right after 1.5s splash */
+            max-width: 440px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.2);
         }
 
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .brand-logo {
-            width: 120px;
-            height: 120px;
+        .logo-img {
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             border: 2px solid #D4AF37;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             object-fit: cover;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
-        .brand-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: 3px;
+        .portal-title {
             color: #ffffff;
-            margin-bottom: 0.5rem;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.4rem;
         }
-        .brand-title span { color: #D4AF37; }
 
-        .brand-subtitle {
-            font-size: 1rem;
+        .portal-title span { color: #D4AF37; }
+
+        .portal-subtitle {
             color: #a0a0a0;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
             font-weight: 300;
-            margin-bottom: 2.5rem;
-            line-height: 1.5;
         }
 
-        /* Premium Buttons Style */
-        .location-buttons {
+        .location-grid {
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            width: 100%;
         }
 
-        .loc-btn {
+        .location-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            padding: 1.2rem;
+            border-radius: 18px;
+            text-decoration: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(212, 175, 55, 0.05));
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 20px;
-            padding: 1.2rem 1.8rem;
-            text-decoration: none;
-            color: #ffffff;
-            transition: all 0.35s ease;
-            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
         }
 
-        .loc-btn:hover {
+        .location-btn:hover {
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
             border-color: #D4AF37;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(30, 64, 39, 0.3));
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(44, 94, 59, 0.5);
         }
 
         .loc-info { text-align: left; }
-        .loc-title { font-size: 1.2rem; font-weight: 600; color: #ffffff; }
-        .loc-sub { font-size: 0.85rem; color: #D4AF37; margin-top: 0.2rem; }
-        .loc-arrow { font-size: 1.4rem; color: #D4AF37; transition: transform 0.3s; }
-        .loc-btn:hover .loc-arrow { transform: translateX(5px); }
+        .loc-name { font-size: 1.15rem; font-weight: 700; color: #ffffff; }
+        .loc-desc { font-size: 0.8rem; color: #D4AF37; margin-top: 0.2rem; }
+        .arrow { font-size: 1.2rem; color: #D4AF37; }
 
-        footer {
-            padding: 1.5rem;
-            font-size: 0.85rem;
-            color: #555;
-            width: 100%;
+        .location-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: rgba(255, 255, 255, 0.1);
         }
-
-        /* Responsive Mobile Styles */
-        @media (max-width: 480px) {
-            .splash-logo {
-                width: 320px;
-                max-width: 88vw;
-            }
-            .brand-title {
-                font-size: 1.8rem;
-            }
+        .location-btn.disabled:hover {
+            background: rgba(255, 255, 255, 0.04);
+            transform: none;
+            box-shadow: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- 1.5-Second Splash Screen -->
-    <div id="splash-screen">
-        <img src="logo.png" alt="GN Massage Logo" class="splash-logo">
-    </div>
+    <div class="portal-card">
+        <img src="logo.png" alt="GN Massage Logo" class="logo-img">
+        <h1 class="portal-title">GN <span>MASSAGE</span></h1>
+        <p class="portal-subtitle">აირჩიეთ ლოკაცია / Select Location</p>
 
-    <!-- Main Content -->
-    <div class="main-container">
-        <img src="logo.png" alt="GN Massage Logo" class="brand-logo">
-        <h1 class="brand-title">GN <span>MASSAGE</span></h1>
-        <p class="brand-subtitle">აირჩიეთ სასურველი ლოკაცია / Select Location</p>
-
-        <div class="location-buttons">
-            <!-- Tbilisi Button -->
-            <a href="tbilisi.html" class="loc-btn">
+        <div class="location-grid">
+            <!-- Tbilisi Option -->
+            <a href="tbilisi.html" class="location-btn">
                 <div class="loc-info">
-                    <div class="loc-title">📍 თბილისი / Tbilisi</div>
-                    <div class="loc-sub">საბურთალო • Saburtalo Cabinet</div>
+                    <div class="loc-name">📍 თბილისი (Tbilisi)</div>
+                    <div class="loc-desc">საბურთალო • Saburtalo</div>
                 </div>
-                <div class="loc-arrow">→</div>
+                <div class="arrow">→</div>
             </a>
 
-            <!-- Bakuriani Button -->
-            <a href="bakuriani.html" class="loc-btn">
+            <!-- Rustavi Option (Coming Soon) -->
+            <div class="location-btn disabled">
                 <div class="loc-info">
-                    <div class="loc-title">🏔️ ბაკურიანი / Bakuriani</div>
-                    <div class="loc-sub">სეზონური ლოკაცია • Seasonal Location</div>
+                    <div class="loc-name">📍 რუსთავი (Rustavi)</div>
+                    <div class="loc-desc">მალე დაემატება • Coming Soon</div>
                 </div>
-                <div class="loc-arrow">→</div>
-            </a>
+                <div class="arrow">🔒</div>
+            </div>
         </div>
     </div>
 
-    <footer>© 2026 GN Massage. All rights reserved.</footer>
-
-    <script>
-        // Automatic 1.5-Second Splash Screen Disappear
-        window.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => {
-                const splash = document.getElementById('splash-screen');
-                if (splash) {
-                    splash.classList.add('fade-out');
-                }
-            }, 1500); // 1500ms = 1.5 seconds
-        });
-    </script>
 </body>
 </html>
