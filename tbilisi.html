@@ -81,7 +81,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
         body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; padding-bottom: 75px; }
 
-        /* 🌐 ენის არჩევის სრული ეკრანი (WELCOME SCREEN) */
+        /* 🌐 ენის ასარჩევი პირველადი ეკრანი */
         #langScreen {
             position: fixed;
             top: 0;
@@ -285,15 +285,15 @@
             
             <div class="lang-btn-list">
                 <button class="lang-choice-btn" onclick="startSite('en')">
-                    <span>🇬🇧 English</span>
+                    <span>🇬🇧 EN English</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
                 <button class="lang-choice-btn" onclick="startSite('ka')">
-                    <span>🇬🇪 ქართული</span>
+                    <span>🇬🇪 GE ქართული</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
                 <button class="lang-choice-btn" onclick="startSite('ru')">
-                    <span>🇷🇺 Русский</span>
+                    <span>🇷🇺 RU Русский</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
             </div>
@@ -673,7 +673,6 @@
             if (lang === 'ru') buttons[2].classList.add('active');
         }
 
-        // 🚀 ენის არჩევისას ეკრანის გაქრობა და საიტის გამოჩენა
         function startSite(lang) {
             setLanguage(lang);
             document.getElementById('langScreen').style.display = 'none';
