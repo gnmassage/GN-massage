@@ -32,7 +32,7 @@
     <!-- Canonical Tag -->
     <link rel="canonical" href="https://gn-massage.vercel.app/tbilisi.html">
 
-    <!-- Schema.org Structured Data (GEO for AI & Local SEO) -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -80,7 +80,64 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Noto Sans Georgian', sans-serif; }
         body { background-color: #0b0f0c; color: #e0e0e0; line-height: 1.6; padding-bottom: 75px; }
-        
+
+        /* 🌐 ენის არჩევის სრული ეკრანი (WELCOME SCREEN) */
+        #langScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: #0b0f0c;
+            background: radial-gradient(circle at center, #16241a 0%, #0b0f0c 80%);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        .lang-card {
+            background: rgba(17, 23, 19, 0.95);
+            border: 1px solid #D4AF37;
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .lang-title { color: #ffffff; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .lang-subtitle { color: #D4AF37; font-size: 0.95rem; margin-bottom: 2rem; font-weight: 300; }
+
+        .lang-btn-list { display: flex; flex-direction: column; gap: 1rem; }
+
+        .lang-choice-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #ffffff;
+            padding: 1.1rem 1.5rem;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .lang-choice-btn:hover {
+            background: linear-gradient(135deg, #1e4027, #2c5e3b);
+            border-color: #D4AF37;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(44, 94, 59, 0.5);
+        }
+
+        /* 🔒 მთავარი საიტის კონტენტი (საწყისად დამალულია) */
+        #mainContent { display: none; }
+
         header { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 2rem; background: rgba(11, 15, 12, 0.95); position: sticky; top: 0; z-index: 100; border-bottom: 1px solid rgba(212, 175, 55, 0.15); backdrop-filter: blur(10px); }
         .header-left { display: flex; align-items: center; gap: 1.5rem; }
         .back-link { color: #a0a0a0; text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
@@ -104,12 +161,11 @@
         .scarcity-badge { display: inline-block; background: rgba(212, 175, 55, 0.08); border: 1px solid #D4AF37; color: #D4AF37; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.8rem; letter-spacing: 0.5px; }
         .hero-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
         
-        .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.3s; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e4027, #2c5e3b); color: #ffffff; padding: 1rem 2rem; border-radius: 16px; text-decoration: none; font-size: 1.05rem; font-weight: 600; border: 1px solid rgba(212, 175, 55, 0.3); box-shadow: 0 10px 30px rgba(44, 94, 59, 0.3); transition: all 0.35s; }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(44, 94, 59, 0.5); background: linear-gradient(135deg, #255232, #367348); }
         .cta-btn-alt { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); box-shadow: none; }
         .cta-btn-alt:hover { background: rgba(255, 255, 255, 0.12); }
         
-        /* Guarantee Badges */
         .value-badges { display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap; max-width: 850px; margin: 0 auto; }
         .badge-item { background: rgba(212, 175, 55, 0.05); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 16px; padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.7rem; font-size: 0.88rem; color: #e0e0e0; font-weight: 500; }
         .badge-icon { font-size: 1.2rem; }
@@ -206,88 +262,6 @@
             100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
         }
 
-        /* 🌐 LANGUAGE SELECTION POP-UP MODAL STYLES */
-        .lang-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .lang-modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .lang-modal-box {
-            background: #111713;
-            border: 1px solid #D4AF37;
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            width: 90%;
-            max-width: 420px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.9), 0 0 25px rgba(212, 175, 55, 0.2);
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-
-        .lang-modal-overlay.active .lang-modal-box {
-            transform: translateY(0);
-        }
-
-        .lang-modal-title {
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .lang-modal-subtitle {
-            color: #D4AF37;
-            font-size: 0.95rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-        }
-
-        .lang-options-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .lang-opt-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: #ffffff;
-            padding: 1rem;
-            border-radius: 16px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .lang-opt-btn:hover {
-            background: linear-gradient(135deg, #1e4027, #2c5e3b);
-            border-color: #D4AF37;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(44, 94, 59, 0.4);
-        }
-
         footer { text-align: center; padding: 3rem 1.5rem 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); color: #666; font-size: 0.85rem; }
         
         @media (max-width: 768px) { 
@@ -303,22 +277,22 @@
 </head>
 <body>
 
-    <!-- 🌐 POP-UP LANGUAGE MODAL -->
-    <div class="lang-modal-overlay" id="langModal">
-        <div class="lang-modal-box">
-            <div class="lang-modal-title">Select Language</div>
-            <div class="lang-modal-subtitle">აირჩიეთ ენა / Выберите язык</div>
+    <!-- 🌐 ენის ასარჩევი პირველადი ეკრანი -->
+    <div id="langScreen">
+        <div class="lang-card">
+            <div class="lang-title">Select Language</div>
+            <div class="lang-subtitle">აირჩიეთ ენა / Выберите язык</div>
             
-            <div class="lang-options-grid">
-                <button class="lang-opt-btn" onclick="selectModalLanguage('en')">
+            <div class="lang-btn-list">
+                <button class="lang-choice-btn" onclick="startSite('en')">
                     <span>🇬🇧 English</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
-                <button class="lang-opt-btn" onclick="selectModalLanguage('ka')">
+                <button class="lang-choice-btn" onclick="startSite('ka')">
                     <span>🇬🇪 ქართული</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
-                <button class="lang-opt-btn" onclick="selectModalLanguage('ru')">
+                <button class="lang-choice-btn" onclick="startSite('ru')">
                     <span>🇷🇺 Русский</span>
                     <span style="color: #D4AF37;">→</span>
                 </button>
@@ -326,208 +300,213 @@
         </div>
     </div>
 
-    <header>
-        <div class="header-left">
-            <a href="index.html" class="back-link" id="back-text">← Change Location</a>
-            <div class="brand-name">GN <span>MASSAGE</span></div>
+    <!-- 🔒 მთავარი საიტის კონტენტი (იხსნება ენის არჩევის შემდეგ) -->
+    <div id="mainContent">
+
+        <header>
+            <div class="header-left">
+                <a href="index.html" class="back-link" id="back-text">← Change Location</a>
+                <div class="brand-name">GN <span>MASSAGE</span></div>
+            </div>
+            <div class="header-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active" onclick="setLanguage('en')">EN</button> | 
+                    <button class="lang-btn" onclick="setLanguage('ka')">GE</button> | 
+                    <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
+                </div>
+                <a href="https://wa.me/995557998522" target="_blank" class="book-nav-btn" id="nav-book-text">Book Now</a>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1 id="hero-title">Forget Back and Neck Pain — Professional Massage in Saburtalo</h1>
+            <p id="hero-sub">Sedentary work, stress, and muscle tension? GN Massage Tbilisi offers tailored therapeutic and recovery treatments in Saburtalo with results from session one.</p>
+            <div class="scarcity-badge" id="scarcity-text">⚡ Admission by prior appointment only (4-5 clients per day)</div>
+            <div class="hero-btns">
+                <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="hero-cta">💬 Book via WhatsApp</a>
+                <a href="https://www.instagram.com/g.n.massage" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
+            </div>
+
+            <!-- Guarantee Badges -->
+            <div class="value-badges">
+                <div class="badge-item">
+                    <span class="badge-icon">🛡️</span>
+                    <span id="vb1"><b>100% Satisfaction Guarantee:</b> If you are not satisfied, we refund your money completely</span>
+                </div>
+                <div class="badge-item">
+                    <span class="badge-icon">📍</span>
+                    <span id="vb2">Cabinet in Saburtalo & Personalized Approach</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+
+            <h2 class="section-title" id="services-title">🌿 <span>Services</span> & Therapeutic Programs</h2>
+
+            <div class="services-grid">
+                <!-- 1. Full Body Wellness -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3 class="service-title" id="s1-title">Full Body Wellness Massage</h3>
+                        <div class="service-price">100 ₾</div>
+                    </div>
+                    <div class="target-tag" id="t1">🔥 Most Popular | 🎯 Ideal for: Chronic fatigue, reduced immunity, lack of energy & total body recovery.</div>
+                    <div class="service-desc" id="s1-desc">Comprehensive wellness therapy at our Saburtalo cabinet that stimulates metabolism, improves circulation, relieves tension, and gives new energy.</div>
+                    <div class="service-meta">
+                        <div>⏱ <span id="dur-text-1">Duration:</span> <span>60-75 <span id="m1">min</span></span></div>
+                        <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Full%20Body%20Wellness%20Massage" target="_blank" class="book-item-btn" id="b1">Book →</a>
+                    </div>
+                </div>
+
+                <!-- 2. Deep Tissue -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3 class="service-title" id="s2-title">Full Body Recovery & Deep Tissue Massage</h3>
+                        <div class="service-price">110 ₾</div>
+                    </div>
+                    <div class="target-tag" id="t2">🔥 Most Popular | 🎯 Ideal for: Athletes, active training, physical exertion & muscle knots (triggers).</div>
+                    <div class="service-desc" id="s2-desc">Intense work on deep muscle layers, tendons, and fascia. Improves blood circulation, tones the body, and ensures quick muscle recovery after exertion.</div>
+                    <div class="service-meta">
+                        <div>⏱ <span id="dur-text-2">Duration:</span> <span>60 <span id="m2">min</span></span></div>
+                        <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Deep%20Tissue%20Massage" target="_blank" class="book-item-btn" id="b2">Book →</a>
+                    </div>
+                </div>
+
+                <!-- 3. Back Massage -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3 class="service-title" id="s3-title">Therapeutic & Healing Back Massage</h3>
+                        <div class="service-price">75 ₾</div>
+                    </div>
+                    <div class="target-tag" id="t3">🎯 Ideal for: Office employees, IT sector & prolonged sitting or driving.</div>
+                    <div class="service-desc" id="s3-desc">Specialized therapeutic massage in Saburtalo to relieve chronic tension and pain in the spine, neck, and lower back.</div>
+                    <div class="service-meta">
+                        <div>⏱ <span id="dur-text-3">Duration:</span> <span>40-45 <span id="m3">min</span></span></div>
+                        <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Therapeutic%20Back%20Massage" target="_blank" class="book-item-btn" id="b3">Book →</a>
+                    </div>
+                </div>
+
+                <!-- 4. Anti-Stress -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3 class="service-title" id="s4-title">Anti-Stress & Deep Relaxation Therapy</h3>
+                        <div class="service-price">100 ₾</div>
+                    </div>
+                    <div class="target-tag" id="t4">🎯 Ideal for: High-responsibility roles, chronic emotional fatigue, anxiety & insomnia.</div>
+                    <div class="service-desc" id="s4-desc">Calm, harmonious rhythm and gentle technique for complete mind and body reset. Relieves fatigue, improves sleep quality, and restores balance.</div>
+                    <div class="service-meta">
+                        <div>⏱ <span id="dur-text-4">Duration:</span> <span>60 <span id="m4">min</span></span></div>
+                        <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Relaxation%20Massage" target="_blank" class="book-item-btn" id="b4">Book →</a>
+                    </div>
+                </div>
+
+                <!-- 5. Lymphatic Drainage -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <h3 class="service-title" id="s5-title">Detoxifying Lymphatic Drainage Massage</h3>
+                        <div class="service-price">100 ₾</div>
+                    </div>
+                    <div class="target-tag" id="t5">🎯 Ideal for: Heavy legs, swelling, fluid retention & slow metabolism.</div>
+                    <div class="service-desc" id="s5-desc">Specialized technique to stimulate the lymphatic system. Effectively eliminates toxins and excess fluid, reduces swelling, and brings lightness.</div>
+                    <div class="service-meta">
+                        <div>⏱ <span id="dur-text-5">Duration:</span> <span>50-60 <span id="m5">min</span></span></div>
+                        <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Lymphatic%20Drainage%20Massage" target="_blank" class="book-item-btn" id="b5">Book →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SEO Content Block -->
+            <div class="seo-info-section">
+                <h2 id="seo-info-title">Why Choose <span>GN Massage</span> in Saburtalo?</h2>
+                <p id="seo-info-p1">If you are looking for professional medical or relaxing massage in Saburtalo, Tbilisi, GN Massage offers top-quality personalized care. We specialize in relieving neck, spine, and lower back tension.</p>
+                <p id="seo-info-p2">Every session is tailored to your individual anatomical needs to ensure long-lasting relief, bodily lightness, and full energy recovery.</p>
+            </div>
+
+            <!-- 🎬 Instagram Reels Section -->
+            <div class="reels-section">
+                <h2 class="section-title" id="reels-title">🎥 <span>Video</span> Showcase & Process</h2>
+                <div class="reels-grid">
+                    <div class="reel-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Ddj6Wu1RwkN/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="reel-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DW4OmNjiMjb/" data-instgrm-version="14"></blockquote>
+                    </div>
+                    <div class="reel-card">
+                        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DezSH8fIlZP/" data-instgrm-version="14"></blockquote>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Therapist Section -->
+            <div class="therapist-section">
+                <div class="therapist-img-container">
+                    <img src="therapist.jpg" alt="GN Massage Therapist" class="therapist-img">
+                </div>
+                <div class="therapist-info">
+                    <div class="therapist-quote" id="t-quote">“My primary certification is your pain-free back and glowing smile.”</div>
+                    <div class="therapist-bio" id="t-bio">
+                        To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>
+                        My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="faq-section">
+                <h2 class="section-title" id="faq-title">❓ <span>Frequently</span> Asked Questions</h2>
+                <div class="faq-container">
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question" id="fq1">What if I am not satisfied with the massage results?</div>
+                        <div class="faq-answer" id="fa1">We believe in the quality of our therapy. If you are not satisfied after your first session, we will fully refund your money with no questions asked.</div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question" id="fq2">Where is the cabinet located?</div>
+                        <div class="faq-answer" id="fa2">The cabinet is located in Saburtalo, Tbilisi, in a convenient and quiet location. The exact address is provided upon booking.</div>
+                    </div>
+                    <div class="faq-item" onclick="toggleFaq(this)">
+                        <div class="faq-question" id="fq3">What should I bring with me?</div>
+                        <div class="faq-answer" id="fa3">You don't need to bring anything. All fresh, single-use, and hygienic accessories are provided at GN Massage.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div class="location-section">
+                <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 Location & Contact — Saburtalo, Tbilisi</h3>
+                <div class="contact-info">
+                    <div>📍 Address: Saburtalo, Tbilisi <a href="https://maps.app.goo.gl/AgTFXgpJn1RoqyL98" target="_blank" class="contact-link" id="map-link">View on Google Maps 🗺️</a></div>
+                    <div>📞 Phone: <a href="tel:+995557998522" class="contact-link">+995 557 99 85 22</a></div>
+                    <div>💬 WhatsApp: <a href="https://wa.me/995557998522" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
+                    <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
+                </div>
+
+                <div class="location-photos-grid">
+                    <div class="location-photo-card">
+                        <img src="cabinet.jpg" alt="GN Massage Cabinet Saburtalo">
+                    </div>
+                    <div class="location-photo-card">
+                        <img src="view.jpg" alt="GN Massage Cabinet View Saburtalo">
+                    </div>
+                </div>
+
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQ3JzM0LjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+
+                <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" style="margin-top: 1.8rem;" id="loc-cta">💬 Book Your Visit</a>
+            </div>
         </div>
-        <div class="header-right">
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLanguage('en')">EN</button> | 
-                <button class="lang-btn" onclick="setLanguage('ka')">GE</button> | 
-                <button class="lang-btn" onclick="setLanguage('ru')">RU</button>
-            </div>
-            <a href="https://wa.me/995557998522" target="_blank" class="book-nav-btn" id="nav-book-text">Book Now</a>
-        </div>
-    </header>
 
-    <section class="hero">
-        <h1 id="hero-title">Forget Back and Neck Pain — Professional Massage in Saburtalo</h1>
-        <p id="hero-sub">Sedentary work, stress, and muscle tension? GN Massage Tbilisi offers tailored therapeutic and recovery treatments in Saburtalo with results from session one.</p>
-        <div class="scarcity-badge" id="scarcity-text">⚡ Admission by prior appointment only (4-5 clients per day)</div>
-        <div class="hero-btns">
-            <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" id="hero-cta">💬 Book via WhatsApp</a>
-            <a href="https://www.instagram.com/g.n.massage" target="_blank" class="cta-btn cta-btn-alt" id="insta-cta">📸 Instagram</a>
-        </div>
+        <!-- Floating Mobile CTA -->
+        <a href="https://wa.me/995557998522" target="_blank" class="floating-cta" id="float-cta">
+            <span>💬 Book via WhatsApp</span>
+        </a>
 
-        <!-- Guarantee Badges -->
-        <div class="value-badges">
-            <div class="badge-item">
-                <span class="badge-icon">🛡️</span>
-                <span id="vb1"><b>100% Satisfaction Guarantee:</b> If you are not satisfied, we refund your money completely</span>
-            </div>
-            <div class="badge-item">
-                <span class="badge-icon">📍</span>
-                <span id="vb2">Cabinet in Saburtalo & Personalized Approach</span>
-            </div>
-        </div>
-    </section>
+        <footer>© 2026 GN Massage Tbilisi. All rights reserved.</footer>
 
-    <div class="container">
-
-        <h2 class="section-title" id="services-title">🌿 <span>Services</span> & Therapeutic Programs</h2>
-
-        <div class="services-grid">
-            <!-- 1. Full Body Wellness -->
-            <div class="service-card">
-                <div class="service-header">
-                    <h3 class="service-title" id="s1-title">Full Body Wellness Massage</h3>
-                    <div class="service-price">100 ₾</div>
-                </div>
-                <div class="target-tag" id="t1">🔥 Most Popular | 🎯 Ideal for: Chronic fatigue, reduced immunity, lack of energy & total body recovery.</div>
-                <div class="service-desc" id="s1-desc">Comprehensive wellness therapy at our Saburtalo cabinet that stimulates metabolism, improves circulation, relieves tension, and gives new energy.</div>
-                <div class="service-meta">
-                    <div>⏱ <span id="dur-text-1">Duration:</span> <span>60-75 <span id="m1">min</span></span></div>
-                    <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Full%20Body%20Wellness%20Massage" target="_blank" class="book-item-btn" id="b1">Book →</a>
-                </div>
-            </div>
-
-            <!-- 2. Deep Tissue -->
-            <div class="service-card">
-                <div class="service-header">
-                    <h3 class="service-title" id="s2-title">Full Body Recovery & Deep Tissue Massage</h3>
-                    <div class="service-price">110 ₾</div>
-                </div>
-                <div class="target-tag" id="t2">🔥 Most Popular | 🎯 Ideal for: Athletes, active training, physical exertion & muscle knots (triggers).</div>
-                <div class="service-desc" id="s2-desc">Intense work on deep muscle layers, tendons, and fascia. Improves blood circulation, tones the body, and ensures quick muscle recovery after exertion.</div>
-                <div class="service-meta">
-                    <div>⏱ <span id="dur-text-2">Duration:</span> <span>60 <span id="m2">min</span></span></div>
-                    <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Deep%20Tissue%20Massage" target="_blank" class="book-item-btn" id="b2">Book →</a>
-                </div>
-            </div>
-
-            <!-- 3. Back Massage -->
-            <div class="service-card">
-                <div class="service-header">
-                    <h3 class="service-title" id="s3-title">Therapeutic & Healing Back Massage</h3>
-                    <div class="service-price">75 ₾</div>
-                </div>
-                <div class="target-tag" id="t3">🎯 Ideal for: Office employees, IT sector & prolonged sitting or driving.</div>
-                <div class="service-desc" id="s3-desc">Specialized therapeutic massage in Saburtalo to relieve chronic tension and pain in the spine, neck, and lower back.</div>
-                <div class="service-meta">
-                    <div>⏱ <span id="dur-text-3">Duration:</span> <span>40-45 <span id="m3">min</span></span></div>
-                    <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Therapeutic%20Back%20Massage" target="_blank" class="book-item-btn" id="b3">Book →</a>
-                </div>
-            </div>
-
-            <!-- 4. Anti-Stress -->
-            <div class="service-card">
-                <div class="service-header">
-                    <h3 class="service-title" id="s4-title">Anti-Stress & Deep Relaxation Therapy</h3>
-                    <div class="service-price">100 ₾</div>
-                </div>
-                <div class="target-tag" id="t4">🎯 Ideal for: High-responsibility roles, chronic emotional fatigue, anxiety & insomnia.</div>
-                <div class="service-desc" id="s4-desc">Calm, harmonious rhythm and gentle technique for complete mind and body reset. Relieves fatigue, improves sleep quality, and restores balance.</div>
-                <div class="service-meta">
-                    <div>⏱ <span id="dur-text-4">Duration:</span> <span>60 <span id="m4">min</span></span></div>
-                    <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Relaxation%20Massage" target="_blank" class="book-item-btn" id="b4">Book →</a>
-                </div>
-            </div>
-
-            <!-- 5. Lymphatic Drainage -->
-            <div class="service-card">
-                <div class="service-header">
-                    <h3 class="service-title" id="s5-title">Detoxifying Lymphatic Drainage Massage</h3>
-                    <div class="service-price">100 ₾</div>
-                </div>
-                <div class="target-tag" id="t5">🎯 Ideal for: Heavy legs, swelling, fluid retention & slow metabolism.</div>
-                <div class="service-desc" id="s5-desc">Specialized technique to stimulate the lymphatic system. Effectively eliminates toxins and excess fluid, reduces swelling, and brings lightness.</div>
-                <div class="service-meta">
-                    <div>⏱ <span id="dur-text-5">Duration:</span> <span>50-60 <span id="m5">min</span></span></div>
-                    <a href="https://wa.me/995557998522?text=Hello,%20I%20would%20like%20to%20book:%20Lymphatic%20Drainage%20Massage" target="_blank" class="book-item-btn" id="b5">Book →</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- SEO Content Block -->
-        <div class="seo-info-section">
-            <h2 id="seo-info-title">Why Choose <span>GN Massage</span> in Saburtalo?</h2>
-            <p id="seo-info-p1">If you are looking for professional medical or relaxing massage in Saburtalo, Tbilisi, GN Massage offers top-quality personalized care. We specialize in relieving neck, spine, and lower back tension.</p>
-            <p id="seo-info-p2">Every session is tailored to your individual anatomical needs to ensure long-lasting relief, bodily lightness, and full energy recovery.</p>
-        </div>
-
-        <!-- 🎬 Instagram Reels Section -->
-        <div class="reels-section">
-            <h2 class="section-title" id="reels-title">🎥 <span>Video</span> Showcase & Process</h2>
-            <div class="reels-grid">
-                <div class="reel-card">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/Ddj6Wu1RwkN/" data-instgrm-version="14"></blockquote>
-                </div>
-                <div class="reel-card">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DW4OmNjiMjb/" data-instgrm-version="14"></blockquote>
-                </div>
-                <div class="reel-card">
-                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DezSH8fIlZP/" data-instgrm-version="14"></blockquote>
-                </div>
-            </div>
-        </div>
-
-        <!-- Therapist Section -->
-        <div class="therapist-section">
-            <div class="therapist-img-container">
-                <img src="therapist.jpg" alt="GN Massage Therapist" class="therapist-img">
-            </div>
-            <div class="therapist-info">
-                <div class="therapist-quote" id="t-quote">“My primary certification is your pain-free back and glowing smile.”</div>
-                <div class="therapist-bio" id="t-bio">
-                    To me, massage therapy goes beyond technical execution — it is a deep understanding of the body, targeted relief of tension, and a fully personalized recovery approach for every client.<br><br>
-                    My true credentials aren't measured by framed diplomas on a wall. My greatest achievements are hundreds of happy, pain-free clients.
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ Section -->
-        <div class="faq-section">
-            <h2 class="section-title" id="faq-title">❓ <span>Frequently</span> Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question" id="fq1">What if I am not satisfied with the massage results?</div>
-                    <div class="faq-answer" id="fa1">We believe in the quality of our therapy. If you are not satisfied after your first session, we will fully refund your money with no questions asked.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question" id="fq2">Where is the cabinet located?</div>
-                    <div class="faq-answer" id="fa2">The cabinet is located in Saburtalo, Tbilisi, in a convenient and quiet location. The exact address is provided upon booking.</div>
-                </div>
-                <div class="faq-item" onclick="toggleFaq(this)">
-                    <div class="faq-question" id="fq3">What should I bring with me?</div>
-                    <div class="faq-answer" id="fa3">You don't need to bring anything. All fresh, single-use, and hygienic accessories are provided at GN Massage.</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Location -->
-        <div class="location-section">
-            <h3 style="color: #ffffff; font-size: 1.4rem;" id="loc-title">📍 Location & Contact — Saburtalo, Tbilisi</h3>
-            <div class="contact-info">
-                <div>📍 Address: Saburtalo, Tbilisi <a href="https://maps.app.goo.gl/AgTFXgpJn1RoqyL98" target="_blank" class="contact-link" id="map-link">View on Google Maps 🗺️</a></div>
-                <div>📞 Phone: <a href="tel:+995557998522" class="contact-link">+995 557 99 85 22</a></div>
-                <div>💬 WhatsApp: <a href="https://wa.me/995557998522" target="_blank" class="contact-link">+995 557 99 85 22</a></div>
-                <div>📸 Instagram: <a href="https://www.instagram.com/g.n.massage" target="_blank" class="contact-link">@g.n.massage</a></div>
-            </div>
-
-            <div class="location-photos-grid">
-                <div class="location-photo-card">
-                    <img src="cabinet.jpg" alt="GN Massage Cabinet Saburtalo">
-                </div>
-                <div class="location-photo-card">
-                    <img src="view.jpg" alt="GN Massage Cabinet View Saburtalo">
-                </div>
-            </div>
-
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.1132891234!2d44.77!3d41.72!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDHCsDQ3JzM0LjAiTiA0NMKwNDYnMjQuMCJF!5e0!3m2!1ska!2sge!4v1600000000000!5m2!1ska!2sge" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-
-            <a href="https://wa.me/995557998522" target="_blank" class="cta-btn" style="margin-top: 1.8rem;" id="loc-cta">💬 Book Your Visit</a>
-        </div>
     </div>
-
-    <!-- Floating Mobile CTA -->
-    <a href="https://wa.me/995557998522" target="_blank" class="floating-cta" id="float-cta">
-        <span>💬 Book via WhatsApp</span>
-    </a>
-
-    <footer>© 2026 GN Massage Tbilisi. All rights reserved.</footer>
 
     <script async src="//www.instagram.com/embed.js"></script>
 
@@ -630,7 +609,6 @@
         };
 
         function setLanguage(lang) {
-            localStorage.setItem('gn_massage_lang', lang);
             const t = translations[lang] || translations['en'];
             
             document.getElementById('back-text').innerText = t.back;
@@ -695,23 +673,12 @@
             if (lang === 'ru') buttons[2].classList.add('active');
         }
 
-        // Pop-up Modal-დან ენის არჩევის ფუნქცია
-        function selectModalLanguage(lang) {
+        // 🚀 ენის არჩევისას ეკრანის გაქრობა და საიტის გამოჩენა
+        function startSite(lang) {
             setLanguage(lang);
-            document.getElementById('langModal').classList.remove('active');
+            document.getElementById('langScreen').style.display = 'none';
+            document.getElementById('mainContent').style.display = 'block';
         }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('gn_massage_lang');
-            
-            // თუ მომხმარებელს ჯერ ენა არ აურჩევია, ამოვუგდოთ Pop-up ფანჯარა
-            if (!savedLang) {
-                document.getElementById('langModal').classList.add('active');
-                setLanguage('en'); // საწყისად დგება ინგლისური
-            } else {
-                setLanguage(savedLang);
-            }
-        });
     </script>
 </body>
 </html>
